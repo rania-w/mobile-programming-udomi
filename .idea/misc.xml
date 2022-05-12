@@ -5,6 +5,11 @@
       <map>
         <entry key="..\:/Users/Edin/AndroidStudioProjects/mobile-programming-udomi/app/src/main/res/layout/activity_loading_screen.xml" value="0.25" />
         <entry key="..\:/Users/Edin/AndroidStudioProjects/mobile-programming-udomi/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_homepage.xml" value="0.29322916666666665" />
+        <entry key="app/src/main/res/layout/activity_login_page.xml" value="0.23097826086956522" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.23550724637681159" />
+        <entry key="app/src/main/res/layout/activity_show_pet.xml" value="0.29322916666666665" />
+        <entry key="app/src/main/res/layout/list.xml" value="0.29322916666666665" />
       </map>
     </option>
   </component>
