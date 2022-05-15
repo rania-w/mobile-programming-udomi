@@ -5,4 +5,13 @@
     <string name = "vaccinated">Vakcinacija</string>
     <string name="birthdate">Datum rođenja</string>
     <string name="adopt">Udomi!</string>
+    <string name="unesimail">Unesite e-mail</string>
+    <string name="unesiloz">Unesite lozinku</string>
+    <string name="ponoloz">Ponovo unesite lozinku</string>
+    <string name="registrujse">Registruj se</string>
+    <string name="prijavise">Prijavi se</string>
+    <string name="vecimateracun">Već imate račun?</string>
+    <string name="home">Home</string>
+    <string name="mypets">My pets</string>
+    <string name="missingpets">Missing pets</string>
 </resources>
