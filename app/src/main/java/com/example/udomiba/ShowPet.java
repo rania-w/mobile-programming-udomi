@@ -31,12 +31,12 @@ public class ShowPet extends AppCompatActivity {
         Bundle extra = intent.getExtras();
         if(extra!=null){
 
-            name.setText(extra.getString(com.example.udomiba.Homepage.NAME));
-            description.setText(extra.getString(com.example.udomiba.Homepage.DESCRIPTION));
-            imageView.setImageResource(extra.getInt(com.example.udomiba.Homepage.IMAGE));
-            birthdate.setText(extra.getString(com.example.udomiba.Homepage.BIRTHDATE));
-            gender.setText(extra.getString(com.example.udomiba.Homepage.GENDER));
-            vaccinated.setText(extra.getString(com.example.udomiba.Homepage.VACCINATED));
+            name.setText(extra.getString(com.example.udomiba.MainActivity.NAME));
+            description.setText(extra.getString(com.example.udomiba.MainActivity.DESCRIPTION));
+            imageView.setImageResource(extra.getInt(com.example.udomiba.MainActivity.IMAGE));
+            birthdate.setText(extra.getString(com.example.udomiba.MainActivity.BIRTHDATE));
+            gender.setText(extra.getString(com.example.udomiba.MainActivity.GENDER));
+            vaccinated.setText(extra.getString(com.example.udomiba.MainActivity.VACCINATED));
         }
 
     }

@@ -17,7 +17,7 @@ public class LoginPage extends AppCompatActivity {
     }
 
     public void moveToHomepage(View view){
-        Intent intent = new Intent(this, Homepage.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 

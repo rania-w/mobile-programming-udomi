@@ -2,7 +2,7 @@
     <string name="app_name">udomi.ba</string>
     <string name="description">Opis ljubimca</string>
     <string name="gender">Spol</string>
-    <string name = "vaccinated">Vakcinacija</string>
+    <string name="vaccinated">Vakcinacija</string>
     <string name="birthdate">Datum rođenja</string>
     <string name="adopt">Udomi!</string>
     <string name="unesimail">Unesite e-mail</string>
