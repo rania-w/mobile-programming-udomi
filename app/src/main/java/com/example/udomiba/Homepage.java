@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Homepage extends AppCompatActivity {
     private ListView listView;
-/**/
+
     public static final String IMAGE = "EXTRA_IMAGE";
     public static final String NAME = "EXTRA_NAME";
     public static final String DESCRIPTION = "EXTRA_DESCRIPTION";
