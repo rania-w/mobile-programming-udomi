@@ -11,7 +11,21 @@
     <string name="registrujse">Registruj se</string>
     <string name="prijavise">Prijavi se</string>
     <string name="vecimateracun">Već imate račun?</string>
-    <string name="home">Home</string>
-    <string name="mypets">My pets</string>
-    <string name="missingpets">Missing pets</string>
+    <string name="home">Početna</string>
+    <string name="mypets">Moji ljubimci</string>
+    <string name="missingpets">Nestali ljubimci</string>
+    <string name="add">Dodaj ljubimca</string>
+    <string name="edit_pet">Uredi</string>
+    <string name="add_missing">Prijavi nestalog ljubimca</string>
+    <string name="add_name">Ime ljubimca</string>
+    <string name="add_description">Vaš opis ljubimca</string>
+    <string name="add_birthdate">Datum rođenja</string>
+    <string name="add_photo">Dodajte sliku!</string>
+    <string name="add_location">Lokacija ljubimca</string>
+    <string name="male">Mužjak</string>
+    <string name="female">Ženka</string>
+    <string name="vaccinated_yes">Vakcinisano</string>
+    <string name="vaccinated_no">Nije vakcinisano</string>
+    <string name="save_changes">Spasi promjene</string>
+    <string name="cancel">Odustani</string>
 </resources>

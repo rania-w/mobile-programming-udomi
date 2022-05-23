@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Udomiba">
         <activity
+            android:name=".AddPet"
+            android:exported="false" />
+        <activity
+            android:name=".MyPet"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
@@ -23,10 +29,10 @@
         </activity>
         <activity
             android:name=".LoginPage"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".ShowPet"
-            android:exported="false"></activity>
+            android:exported="false" />
     </application>
 
 </manifest>

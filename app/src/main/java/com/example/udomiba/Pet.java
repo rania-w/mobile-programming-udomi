@@ -7,6 +7,8 @@ public class Pet {
     String vaccinated;
     String gender;
     String birthdate;
+    int adopted;
+    int missing;
 
     public Pet(String name, String description, int photo, String vaccinated, String gender, String birthdate) {
         this.name = name;
@@ -15,6 +17,7 @@ public class Pet {
         this.vaccinated = vaccinated;
         this.gender = gender;
         this.birthdate = birthdate;
+        this.adopted=0;
     }
 
     public String getName() {

@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="udomi_zelena">#208454</color>
     <color name="udomi_zuta">#c88c34</color>
+    <color name="udomi_crvena">#DB5461</color>
+    <color name="leparoza">#FFDDE2</color>
+    <color name="lepazelena">#bcebcb</color>
 </resources>
