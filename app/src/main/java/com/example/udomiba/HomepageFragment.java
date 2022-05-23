@@ -19,6 +19,9 @@ public class HomepageFragment extends Fragment {
     public static final String EXTRA_IMAGE = "EXTRA_IMAGE";
     public static final String EXTRA_NAME = "EXTRA_NAME";
     public static final String EXTRA_DESCRIPTION = "EXTRA_DESCRIPTION";
+    public static final String BIRTHDATE = "EXTRA_BIRTHDATE";
+    public static final String VACCINATED = "EXTRA_VACCINATED";
+    public static final String GENDER = "EXTRA_GENDER";
     private ListView listView;
 
     List<Pet> petList;
@@ -32,7 +35,7 @@ public class HomepageFragment extends Fragment {
 
         CustomListViewAdapter customListViewAdapter = new CustomListViewAdapter(getActivity(), getPetList());
         listView.setAdapter(customListViewAdapter);
-        //listView.setOnItemClickListener(onItemClickListener);
+        listView.setOnItemClickListener(onItemClickListener);
         return view;
     }
 
@@ -44,6 +47,11 @@ public class HomepageFragment extends Fragment {
             intent.putExtra(EXTRA_IMAGE,pet.getPhoto());
             intent.putExtra(EXTRA_NAME, pet.getName());
             intent.putExtra(EXTRA_DESCRIPTION, pet.getDescription());
+            intent.putExtra(BIRTHDATE, pet.getBirthdate());
+            intent.putExtra(GENDER, pet.getGender());
+            intent.putExtra(VACCINATED, pet.getVaccinated());
+
+
 
             startActivity(intent);
         }

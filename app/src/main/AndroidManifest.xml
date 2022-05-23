@@ -27,9 +27,6 @@
         <activity
             android:name=".ShowPet"
             android:exported="false"></activity>
-        <activity
-            android:name=".Homepage"
-            android:exported="false"></activity>
     </application>
 
 </manifest>
