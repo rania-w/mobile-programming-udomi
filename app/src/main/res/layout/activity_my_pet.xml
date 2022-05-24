@@ -8,7 +8,7 @@
     tools:context=".ShowPet">
 
     <Button
-        android:id="@+id/edit_pet"
+        android:id="@+id/edit_pet_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/udomi_zelena"

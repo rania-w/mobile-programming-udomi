@@ -21,6 +21,7 @@
     <string name="add_description">Vaš opis ljubimca</string>
     <string name="add_birthdate">Datum rođenja</string>
     <string name="add_photo">Dodajte sliku!</string>
+    <string name="edit_photo">Zamijenite sliku</string>
     <string name="add_location">Lokacija ljubimca</string>
     <string name="male">Mužjak</string>
     <string name="female">Ženka</string>
@@ -28,4 +29,5 @@
     <string name="vaccinated_no">Nije vakcinisano</string>
     <string name="save_changes">Spasi promjene</string>
     <string name="cancel">Odustani</string>
+    <string name="edit_location">Promijenite lokaciju</string>
 </resources>

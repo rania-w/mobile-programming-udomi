@@ -54,9 +54,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void setUpAdapter(ViewPager viewPager){
         ViewPageAdapter viewPageAdapter = new ViewPageAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        viewPageAdapter.addFragment(new MissingPetsFragment());
-        viewPageAdapter.addFragment(new HomepageFragment());
         viewPageAdapter.addFragment(new MyPetsFragment());
+        viewPageAdapter.addFragment(new HomepageFragment());
+        viewPageAdapter.addFragment(new MissingPetsFragment());
         viewPager.setAdapter(viewPageAdapter);
     }
 /**/
@@ -65,13 +65,13 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item){
             Log.d("DEBUG", "Item clicked " + item.getItemId());
             switch (item.getItemId()){
-                case R.id.nav_missing_pets:
+                case R.id.nav_my_pets:
                     viewPager.setCurrentItem(0);
                     return true;
                 case R.id.nav_home:
                     viewPager.setCurrentItem(1);
                     return true;
-                case R.id.nav_my_pets:
+                case R.id.nav_missing_pets:
                     viewPager.setCurrentItem(2);
                     return true;
                 default: return false;

@@ -24,7 +24,7 @@ public class HomepageFragment extends Fragment {
     public static final String GENDER = "EXTRA_GENDER";
     private ListView listView;
 
-    List<Pet> petList;
+
 
     @Nullable
     @Override
@@ -50,8 +50,6 @@ public class HomepageFragment extends Fragment {
             intent.putExtra(BIRTHDATE, pet.getBirthdate());
             intent.putExtra(GENDER, pet.getGender());
             intent.putExtra(VACCINATED, pet.getVaccinated());
-
-
 
             startActivity(intent);
         }

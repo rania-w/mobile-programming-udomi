@@ -4,38 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddPet">
+    tools:context=".EditPet">
 
     <EditText
-        android:id="@+id/add_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:hint="@string/add_name"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:textColorHighlight="@color/lepazelena"
-        android:textColorHint="#757575"
-        android:textColorLink="@color/lepazelena"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/add_description"
+        android:id="@+id/edit_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:ems="10"
-        android:hint="@string/add_description"
+
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:textColorHint="#757575"
+        android:textColorHighlight="@color/lepazelena"
+
         android:textColorLink="@color/lepazelena"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_name" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edit_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+
+        android:textColorLink="@color/lepazelena"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_name" />
 
     <RadioGroup
         android:id="@+id/radioGroupVaccinated"
@@ -53,8 +53,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:text="@string/vaccinated_yes"
-            android:buttonTint="@color/udomi_zuta" />
+            android:buttonTint="@color/udomi_zuta"
+            android:text="@string/vaccinated_yes" />
 
         <RadioButton
             android:id="@+id/notvaccinated_radio_button"
@@ -62,81 +62,93 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:text="@string/vaccinated_no"
-            android:buttonTint="@color/udomi_zuta" />
+            android:buttonTint="@color/udomi_zuta"
+            android:text="@string/vaccinated_no" />
     </RadioGroup>
 
     <TextView
-        android:id="@+id/add_birthdate_text"
+        android:id="@+id/edit_birthdate_text"
         android:layout_width="186dp"
         android:layout_height="64dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:gravity="center_vertical"
         android:text="@string/add_birthdate"
-        android:textSize="18dp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_description" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_description" />
 
     <TextView
-        android:id="@+id/add_image_text"
+        android:id="@+id/edit_image_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:gravity="center"
-        android:text="@string/add_photo"
+        android:text="@string/edit_photo"
         android:textColor="#6D4305"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_location_text" />
-
-    <TextView
-        android:id="@+id/add_location_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:gravity="center"
-        android:text="@string/add_location"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/edit_location_text"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroupVaccinated" />
 
-    <ImageButton
-        android:id="@+id/add_image_button"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="24dp"
+    <TextView
+        android:id="@+id/edit_location_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="@string/edit_location"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/edit_image_text"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupVaccinated" />
+
+    <ImageButton
+        android:id="@+id/edit_image_button"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toStartOf="@+id/edit_location_button"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_image_text"
+        app:layout_constraintTop_toBottomOf="@+id/edit_image_text"
         app:srcCompat="@drawable/bunny1" />
 
+    <ImageButton
+        android:id="@+id/edit_location_button"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/edit_image_button"
+        app:layout_constraintTop_toBottomOf="@+id/edit_location_text"
+        app:srcCompat="@drawable/ic_baseline_location_on_24" />
+
     <Button
-        android:id="@+id/save_add_button"
+        android:id="@+id/save_edit_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/save_changes"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/add_cancel_button"
-        app:layout_constraintTop_toBottomOf="@+id/add_image_button" />
+        app:layout_constraintStart_toEndOf="@+id/edit_cancel_button"
+        app:layout_constraintTop_toBottomOf="@+id/edit_location_button" />
 
     <Button
-        android:id="@+id/add_cancel_button"
+        android:id="@+id/edit_cancel_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:backgroundTint="@color/udomi_crvena"
         android:text="@string/cancel"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/save_add_button"
+        app:layout_constraintEnd_toStartOf="@+id/save_edit_button"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_image_button" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_image_button" />
 
 
     <Button
@@ -148,10 +160,10 @@
         android:layout_marginTop="8dp"
         android:buttonTint="@color/udomi_zuta"
         android:onClick="openDatePicker"
-        android:text="JAN 01 2020"
+
         android:textColor="@color/udomi_zuta"
-        app:layout_constraintStart_toEndOf="@+id/add_birthdate_text"
-        app:layout_constraintTop_toBottomOf="@+id/add_description" />
+        app:layout_constraintStart_toEndOf="@+id/edit_birthdate_text"
+        app:layout_constraintTop_toBottomOf="@+id/edit_description" />
 
     <RadioGroup
         android:id="@+id/radioGroupGender"
@@ -161,7 +173,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_birthdate_text">
+        app:layout_constraintTop_toBottomOf="@+id/edit_birthdate_text">
 
         <RadioButton
             android:id="@+id/male_radio_button"
@@ -169,8 +181,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:text="@string/male"
             android:buttonTint="@color/udomi_zuta"
+            android:text="@string/male"
             app:useMaterialThemeColors="false" />
 
         <RadioButton
@@ -179,8 +191,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:text="@string/female"
-            android:buttonTint="@color/udomi_zuta"/>
+            android:buttonTint="@color/udomi_zuta"
+            android:text="@string/female" />
     </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

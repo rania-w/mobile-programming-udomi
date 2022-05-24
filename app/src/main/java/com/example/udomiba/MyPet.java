@@ -1,10 +1,15 @@
 package com.example.udomiba;
 
+import static com.example.udomiba.HomepageFragment.EXTRA_DESCRIPTION;
+import static com.example.udomiba.HomepageFragment.EXTRA_NAME;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,6 +20,7 @@ public class MyPet extends AppCompatActivity {
     private TextView birthdate;
     private TextView gender;
     private TextView vaccinated;
+    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +44,17 @@ public class MyPet extends AppCompatActivity {
             gender.setText(extra.getString(com.example.udomiba.MainActivity.GENDER));
             vaccinated.setText(extra.getString(com.example.udomiba.MainActivity.VACCINATED));
         }
+
+        button = (Button) findViewById(R.id.edit_pet_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveToEditPet(v);
+            }
+        });
     }
-    /*public void moveToEditPet(View view){
+    public void moveToEditPet(View view){
         Intent intent = new Intent(this, EditPet.class);
         startActivity(intent);
-    }*/
+    }
 }
