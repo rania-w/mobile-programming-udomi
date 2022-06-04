@@ -8,9 +8,10 @@
     <string name="unesimail">Unesite e-mail</string>
     <string name="unesiloz">Unesite lozinku</string>
     <string name="ponoloz">Ponovo unesite lozinku</string>
+    <string name="unesibroj">Unesite broj telefona</string>
     <string name="registrujse">Registruj se</string>
     <string name="prijavise">Prijavi se</string>
-    <string name="vecimateracun">Već imate račun?</string>
+
     <string name="home">Početna</string>
     <string name="mypets">Moji ljubimci</string>
     <string name="missingpets">Nestali ljubimci</string>

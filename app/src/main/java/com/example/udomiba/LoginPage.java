@@ -21,4 +21,9 @@ public class LoginPage extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void moveToRegisterPage(View view){
+        Intent intent = new Intent(this, RegisterPage.class);
+        startActivity(intent);
+    }
+
 }

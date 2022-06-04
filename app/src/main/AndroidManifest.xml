@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Udomiba">
         <activity
+            android:name=".RegisterPage"
+            android:exported="false" />
+        <activity
             android:name=".EditPet"
             android:exported="false" />
         <activity

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -98,5 +99,10 @@ public class EditPet extends AppCompatActivity {
     public void openDatePicker(View view)
     {
         datePickerDialog.show();
+    }
+
+    public void goBack(View view){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

@@ -144,6 +144,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:backgroundTint="@color/udomi_crvena"
+        android:onClick="goBack"
         android:text="@string/cancel"
         app:layout_constraintEnd_toStartOf="@+id/save_edit_button"
         app:layout_constraintHorizontal_bias="0.5"
