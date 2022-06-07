@@ -6,179 +6,160 @@
     android:layout_height="match_parent"
     tools:context=".AddPet">
 
-    <EditText
-        android:id="@+id/add_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:hint="@string/add_name"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:textColorHighlight="@color/lepazelena"
-        android:textColorHint="#757575"
-        android:textColorLink="@color/lepazelena"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/add_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:hint="@string/add_description"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:textColorHint="#757575"
-        android:textColorLink="@color/lepazelena"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_name" />
-
-    <RadioGroup
-        android:id="@+id/radioGroupVaccinated"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroupGender">
-
-        <RadioButton
-            android:id="@+id/vaccinated_radio_button"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/vaccinated_yes"
-            android:buttonTint="@color/udomi_zuta" />
+            android:orientation="vertical" >
 
-        <RadioButton
-            android:id="@+id/notvaccinated_radio_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/vaccinated_no"
-            android:buttonTint="@color/udomi_zuta" />
-    </RadioGroup>
+            <Button
+                android:id="@+id/datePickerButton"
+                style="?android:spinnerStyle"
+                android:layout_width="186dp"
+                android:layout_height="64dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:buttonTint="@color/udomi_zuta"
+                android:onClick="openDatePicker"
+                android:text="JAN 01 2020"
+                android:textColor="@color/udomi_zuta" />
 
-    <TextView
-        android:id="@+id/add_birthdate_text"
-        android:layout_width="186dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:gravity="center_vertical"
-        android:text="@string/add_birthdate"
-        android:textSize="18dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_description" />
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:onClick="onLocationClick"
+                android:text="Dodajte lokaciju!" />
 
-    <TextView
-        android:id="@+id/add_image_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:gravity="center"
-        android:text="@string/add_photo"
-        android:textColor="#6D4305"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+            <RadioGroup
+                android:id="@+id/radioGroupGender"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
 
-    <ImageButton
-        android:id="@+id/add_image_button"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_image_text"
-        app:srcCompat="@drawable/bunny1" />
+                <RadioButton
+                    android:id="@+id/male_radio_button"
+                    android:layout_width="95dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:buttonTint="@color/udomi_zuta"
+                    android:text="@string/male"
+                    app:useMaterialThemeColors="false" />
 
-    <Button
-        android:id="@+id/save_add_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/save_changes"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/add_cancel_button"
-        app:layout_constraintTop_toBottomOf="@+id/add_image_button" />
+                <RadioButton
+                    android:id="@+id/female_radio_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:buttonTint="@color/udomi_zuta"
+                    android:text="@string/female" />
+            </RadioGroup>
 
-    <Button
-        android:id="@+id/add_cancel_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/udomi_crvena"
-        android:text="@string/cancel"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/save_add_button"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_image_button" />
+            <EditText
+                android:id="@+id/add_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:ems="10"
+                android:hint="@string/add_description"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:textColorHint="#757575"
+                android:textColorLink="@color/lepazelena" />
 
+            <RadioGroup
+                android:id="@+id/radioGroupVaccinated"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/datePickerButton"
-        style="?android:spinnerStyle"
-        android:layout_width="186dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:buttonTint="@color/udomi_zuta"
-        android:onClick="openDatePicker"
-        android:text="JAN 01 2020"
-        android:textColor="@color/udomi_zuta"
-        app:layout_constraintStart_toEndOf="@+id/add_birthdate_text"
-        app:layout_constraintTop_toBottomOf="@+id/add_description" />
+                <RadioButton
+                    android:id="@+id/vaccinated_radio_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:buttonTint="@color/udomi_zuta"
+                    android:text="@string/vaccinated_yes" />
 
-    <RadioGroup
-        android:id="@+id/radioGroupGender"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_birthdate_text">
+                <RadioButton
+                    android:id="@+id/notvaccinated_radio_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:buttonTint="@color/udomi_zuta"
+                    android:text="@string/vaccinated_no" />
+            </RadioGroup>
 
-        <RadioButton
-            android:id="@+id/male_radio_button"
-            android:layout_width="95dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/male"
-            android:buttonTint="@color/udomi_zuta"
-            app:useMaterialThemeColors="false" />
+            <Button
+                android:id="@+id/add_cancel_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/udomi_crvena"
+                android:text="@string/cancel" />
 
-        <RadioButton
-            android:id="@+id/female_radio_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/female"
-            android:buttonTint="@color/udomi_zuta"/>
-    </RadioGroup>
+            <TextView
+                android:id="@+id/add_birthdate_text"
+                android:layout_width="186dp"
+                android:layout_height="64dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:text="@string/add_birthdate"
+                android:textSize="18dp" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Dodajte lokaciju!"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroupVaccinated" />
+            <Button
+                android:id="@+id/save_add_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/save_changes" />
+
+            <ImageButton
+                android:id="@+id/add_image_button"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="24dp"
+                android:onClick="selectImage"
+                app:srcCompat="@drawable/bunny1" />
+
+            <EditText
+                android:id="@+id/add_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="32dp"
+                android:ems="10"
+                android:hint="@string/add_name"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:textColorHighlight="@color/lepazelena"
+                android:textColorHint="#757575"
+                android:textColorLink="@color/lepazelena" />
+
+            <TextView
+                android:id="@+id/add_image_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:text="@string/add_photo"
+                android:textColor="#6D4305"
+                android:textSize="18dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

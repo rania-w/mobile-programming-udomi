@@ -1,19 +1,43 @@
 package com.example.udomiba;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.location.Location;
+import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.Toast;
+
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 import java.util.Calendar;
 
-public class AddPet extends AppCompatActivity {
+public class AddPet extends AppCompatActivity   {
     private DatePickerDialog datePickerDialog;
     private Button dateButton;
+
+    private static final int LOCATION_REQUEST_CODE = 123;
+    private FusedLocationProviderClient mFueLocationProviderClient;
+    private GoogleMap mMap;
+    private SupportMapFragment mSupportMapFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,5 +123,33 @@ public class AddPet extends AppCompatActivity {
     public void openDatePicker(View view)
     {
         datePickerDialog.show();
+    }
+
+    public void onLocationClick(View view){
+        Intent intent = new Intent(this, Map.class);
+        startActivity(intent);
+    }
+
+
+
+    static final int REQUEST_IMAGE_GET = 1;
+
+    @SuppressWarnings("deprecation")
+    public void selectImage(View view) {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(intent, REQUEST_IMAGE_GET);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_IMAGE_GET && resultCode == RESULT_OK) {
+            Uri fullPhotoUri = data.getData();
+            //add uri in pet database
+
+        }
     }
 }

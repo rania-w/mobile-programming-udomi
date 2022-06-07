@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.nav_home:
                     viewPager.setCurrentItem(1);
                     return true;
-                case R.id.nav_missing_pets:
+                case R.id.nav_search:
                     viewPager.setCurrentItem(2);
                     return true;
                 default: return false;

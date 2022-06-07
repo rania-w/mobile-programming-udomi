@@ -31,4 +31,5 @@
     <string name="save_changes">Spasi promjene</string>
     <string name="cancel">Odustani</string>
     <string name="edit_location">Promijenite lokaciju</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>
