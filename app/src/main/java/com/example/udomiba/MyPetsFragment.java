@@ -20,6 +20,7 @@ public class MyPetsFragment extends Fragment {
     ListView listView;
     Button button;
 
+    public static final String EXTRA_ID = "";
     public static final String EXTRA_IMAGE = "EXTRA_IMAGE";
     public static final String EXTRA_NAME = "EXTRA_NAME";
     public static final String EXTRA_DESCRIPTION = "EXTRA_DESCRIPTION";
@@ -78,6 +79,10 @@ public class MyPetsFragment extends Fragment {
     public void moveToAddPet() {
         Intent intent;
         intent = new Intent(getActivity(), AddPet.class);
+        Intent prev = getActivity().getIntent();
+        Bundle b = prev.getExtras();
+        int uid = b.getInt(LoginPage.EXTRA_ID);
+        intent.putExtra(EXTRA_ID, uid);
         startActivity(intent);
     }
 }

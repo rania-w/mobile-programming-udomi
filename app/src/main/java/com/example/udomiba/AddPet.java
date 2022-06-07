@@ -40,7 +40,7 @@ public class AddPet extends AppCompatActivity   {
     EditText name, description;
     //Button save, cancel, date;
     RadioGroup gender, vaccinated;
-    RadioButton genderButton, vaccButton;
+    RadioButton male, female, vacc, nvacc, genderButton, vaccButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +51,10 @@ public class AddPet extends AppCompatActivity   {
         description=findViewById(R.id.add_description);
         gender=findViewById(R.id.radioGroupGender);
         vaccinated=findViewById(R.id.radioGroupVaccinated);
+        male=findViewById(R.id.male_radio_button);
+        female=findViewById(R.id.female_radio_button);
+        vacc=findViewById(R.id.vaccinated_radio_button);
+        nvacc=findViewById(R.id.notvaccinated_radio_button);
 
         initDatePicker();
         dateButton = findViewById(R.id.datePickerButton);
@@ -165,8 +169,12 @@ public class AddPet extends AppCompatActivity   {
         int selectedIdVacc = vaccinated.getCheckedRadioButtonId();
         genderButton = (RadioButton) findViewById(selectedIdGender);
         vaccButton= (RadioButton) findViewById(selectedIdVacc);
+
+        Bundle bundle = getIntent().getExtras();
+        int id=bundle.getInt(MyPetsFragment.EXTRA_ID);
         //can't add images so hardcoded for now
-        Pet pet = new Pet(name.getText().toString(), description.getText().toString(), R.drawable.dog1, vaccButton.getText().toString(), genderButton.getText().toString(), dateButton.getText().toString());
+        Pet pet;
+        pet = new Pet(name.getText().toString(), description.getText().toString(), R.drawable.dog1, vaccButton.getText().toString(), genderButton.getText().toString(), dateButton.getText().toString(), id);
         UdomiDatabase.getInstance(this).petDAO().addPet(pet);
         startActivity(intent);
     }
