@@ -1,6 +1,12 @@
 package com.example.udomiba;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "pets")
 public class Pet {
+    @PrimaryKey(autoGenerate = true)
+    private int petId;
     String name;
     String description;
     int photo;
@@ -8,7 +14,15 @@ public class Pet {
     String gender;
     String birthdate;
     int adopted;
-    int missing;
+    int ownerId;
+
+    public int getPetId() {
+        return petId;
+    }
+
+    public void setPetId(int id) {
+        this.petId = id;
+    }
 
     public Pet(String name, String description, int photo, String vaccinated, String gender, String birthdate) {
         this.name = name;

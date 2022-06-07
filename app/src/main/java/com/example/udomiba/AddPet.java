@@ -15,6 +15,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -34,15 +37,20 @@ public class AddPet extends AppCompatActivity   {
     private DatePickerDialog datePickerDialog;
     private Button dateButton;
 
-    private static final int LOCATION_REQUEST_CODE = 123;
-    private FusedLocationProviderClient mFueLocationProviderClient;
-    private GoogleMap mMap;
-    private SupportMapFragment mSupportMapFragment;
+    EditText name, description;
+    //Button save, cancel, date;
+    RadioGroup gender, vaccinated;
+    RadioButton genderButton, vaccButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_pet);
+
+        name=findViewById(R.id.add_name);
+        description=findViewById(R.id.add_description);
+        gender=findViewById(R.id.radioGroupGender);
+        vaccinated=findViewById(R.id.radioGroupVaccinated);
 
         initDatePicker();
         dateButton = findViewById(R.id.datePickerButton);
@@ -130,8 +138,6 @@ public class AddPet extends AppCompatActivity   {
         startActivity(intent);
     }
 
-
-
     static final int REQUEST_IMAGE_GET = 1;
 
     @SuppressWarnings("deprecation")
@@ -151,5 +157,15 @@ public class AddPet extends AppCompatActivity   {
             //add uri in pet database
 
         }
+    }
+
+    public void onSave(View view){
+        Intent intent = new Intent(this, MainActivity.class);
+        int selectedIdGender = gender.getCheckedRadioButtonId();
+        int selectedIdVacc = vaccinated.getCheckedRadioButtonId();
+        genderButton = (RadioButton) findViewById(selectedIdGender);
+        vaccButton= (RadioButton) findViewById(selectedIdVacc);
+        Pet pet = new Pet(name.getText().toString(), description.getText().toString(), R.drawable.dog1, vaccButton.getText().toString(), genderButton.getText().toString(), dateButton.getText().toString());
+        startActivity(intent);
     }
 }
