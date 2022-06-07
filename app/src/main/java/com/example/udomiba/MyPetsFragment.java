@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,6 +20,8 @@ import java.util.List;
 public class MyPetsFragment extends Fragment {
     ListView listView;
     Button button;
+    TextView welcome;
+    User user;
 
     public static final String EXTRA_ID = "";
     public static final String EXTRA_IMAGE = "EXTRA_IMAGE";

@@ -23,7 +23,7 @@
         <entry key="app/src/main/res/drawable/ic_baseline_pets_24.xml" value="0.293" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2945" />
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.2945" />
-        <entry key="app/src/main/res/layout/activity_add_pet.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_add_pet.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_edit_pet.xml" value="0.32395833333333335" />
         <entry key="app/src/main/res/layout/activity_homepage.xml" value="0.29322916666666665" />
         <entry key="app/src/main/res/layout/activity_loading_screen.xml" value="0.2341485507246377" />

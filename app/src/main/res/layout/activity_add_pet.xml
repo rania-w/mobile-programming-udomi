@@ -9,53 +9,68 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="-48dp"
-        tools:layout_editor_absoluteY="16dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="800dp">
 
             <EditText
                 android:id="@+id/add_name"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
                 android:ems="10"
                 android:hint="@string/add_name"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
                 android:textColorHighlight="@color/lepazelena"
                 android:textColorHint="#757575"
-                android:textColorLink="@color/lepazelena" />
+                android:textColorLink="@color/lepazelena"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
 
             <Button
                 android:id="@+id/datePickerButton"
                 style="?android:spinnerStyle"
-                android:layout_width="186dp"
-                android:layout_height="64dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
                 android:buttonTint="@color/udomi_zuta"
                 android:onClick="openDatePicker"
                 android:text="JAN 01 2020"
-                android:textColor="@color/udomi_zuta" />
+                android:textColor="@color/udomi_zuta"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/birthdate_text" />
+
 
             <RadioGroup
-                android:id="@+id/radioGroupGender"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:orientation="horizontal">
+                android:id="@+id/radioGenderGroup"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/datePickerButton">
+
 
                 <RadioButton
                     android:id="@+id/male_radio_button"
-                    android:layout_width="95dp"
+                    android:layout_width="88dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="16dp"
                     android:buttonTint="@color/udomi_zuta"
                     android:text="@string/male"
                     app:useMaterialThemeColors="false" />
@@ -64,67 +79,81 @@
                     android:id="@+id/female_radio_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="56dp"
                     android:buttonTint="@color/udomi_zuta"
                     android:text="@string/female" />
+
             </RadioGroup>
 
             <RadioGroup
                 android:id="@+id/radioGroupVaccinated"
-                android:layout_width="300dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/vaccinated_radio_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:buttonTint="@color/udomi_zuta"
-                    android:text="@string/vaccinated_yes" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/radioGenderGroup">
 
                 <RadioButton
                     android:id="@+id/notvaccinated_radio_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="16dp"
                     android:buttonTint="@color/udomi_zuta"
                     android:text="@string/vaccinated_no" />
 
+                <RadioButton
+                    android:id="@+id/vaccinated_radio_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/udomi_zuta"
+                    android:text="@string/vaccinated_yes" />
             </RadioGroup>
 
             <EditText
                 android:id="@+id/add_description"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
                 android:ems="10"
                 android:hint="@string/add_description"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
                 android:textColorHint="#757575"
-                android:textColorLink="@color/lepazelena" />
+                android:textColorLink="@color/lepazelena"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/radioGroupVaccinated" />
 
             <Button
                 android:id="@+id/save_add_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
                 android:onClick="onSave"
-                android:text="@string/save_changes" />
+                android:text="@string/save_changes"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_image_button" />
 
             <Button
                 android:id="@+id/add_cancel_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="32dp"
                 android:backgroundTint="@color/udomi_crvena"
-                android:text="@string/cancel" />
+                android:text="@string/cancel"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_image_button" />
 
             <Button
                 android:id="@+id/button"
@@ -132,7 +161,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:onClick="onLocationClick"
-                android:text="Dodajte lokaciju!" />
+                android:text="Dodajte lokaciju!"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_description" />
 
             <ImageButton
                 android:id="@+id/add_image_button"
@@ -140,9 +173,37 @@
                 android:layout_height="150dp"
                 android:layout_marginTop="24dp"
                 android:onClick="selectImage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_text"
                 app:srcCompat="@drawable/bunny1" />
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/birthdate_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/birthdate"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_name" />
+
+            <TextView
+                android:id="@+id/image_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Izaberite sliku!"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
 
