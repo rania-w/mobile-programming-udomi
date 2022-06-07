@@ -16,14 +16,6 @@ public class Pet {
     int adopted;
     int ownerId;
 
-    public int getPetId() {
-        return petId;
-    }
-
-    public void setPetId(int id) {
-        this.petId = id;
-    }
-
     public Pet(String name, String description, int photo, String vaccinated, String gender, String birthdate) {
         this.name = name;
         this.description = description;
@@ -32,6 +24,15 @@ public class Pet {
         this.gender = gender;
         this.birthdate = birthdate;
         this.adopted=0;
+        this.ownerId = Integer.parseInt(LoginPage.EXTRA_ID);
+    }
+
+    public int getPetId() {
+        return petId;
+    }
+
+    public void setPetId(int id) {
+        this.petId = id;
     }
 
     public String getName() {

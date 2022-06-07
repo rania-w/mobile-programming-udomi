@@ -32,10 +32,10 @@ public class LoginPage extends AppCompatActivity {
         if(user==null){
             Toast.makeText(this, "Korisnik ne postoji/netačna lozinka", Toast.LENGTH_SHORT).show();
         } else {
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra(EXTRA_ID, user.getUserId());
-        startActivity(intent)
-        ;}
+            Intent intent = new Intent(LoginPage.this, MainActivity.class);
+            intent.putExtra(EXTRA_ID, user.getUserId());
+            startActivity(intent);
+        }
     }
 
 }

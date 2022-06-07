@@ -65,9 +65,13 @@ public class MyPetsFragment extends Fragment {
     };
 
     private List<Pet> getPetList() {
-        List<Pet> petList = new ArrayList<>();
+        Intent intent = getActivity().getIntent();
+        Bundle bundle = intent.getExtras();
+        int userId = bundle.getInt(LoginPage.EXTRA_ID);
+        List<Pet> petList = UdomiDatabase.getInstance(getContext()).petDAO().getMine(userId);
+        /*new ArrayList<>();
         petList.add(new Pet("Doggo", "woof", R.drawable.dog1, "vakcinisan", "mužjak", "2020-02-02"));
-        petList.add(new Pet("Catto", "meow", R.drawable.cat1, "vakcinisana", "ženka", "2020-01-01"));
+        petList.add(new Pet("Catto", "meow", R.drawable.cat1, "vakcinisana", "ženka", "2020-01-01"));*/
         return petList;
     }
 

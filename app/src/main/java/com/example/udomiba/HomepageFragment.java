@@ -59,7 +59,7 @@ public class HomepageFragment extends Fragment {
         petList.add(new Pet("Doggo", "woof", R.drawable.dog1, "vakcinisan", "mužjak", "2020-02-02"));
         petList.add(new Pet("Catto", "meow", R.drawable.cat1, "vakcinisana", "ženka", "2020-01-01"));
         petList.add(new Pet("Bunny", "wassup doc", R.drawable.bunny1, "nevakcinisan", "mužjak", "2020-03-03"));*/
-       List<Pet> petList = UdomiDatabase.getInstance(getActivity()).petDAO().getAll();
+        List<Pet> petList = UdomiDatabase.getInstance(getActivity()).petDAO().getAll();
         return petList;
     }
 

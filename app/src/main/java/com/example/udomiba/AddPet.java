@@ -165,7 +165,9 @@ public class AddPet extends AppCompatActivity   {
         int selectedIdVacc = vaccinated.getCheckedRadioButtonId();
         genderButton = (RadioButton) findViewById(selectedIdGender);
         vaccButton= (RadioButton) findViewById(selectedIdVacc);
+        //can't add images so hardcoded for now
         Pet pet = new Pet(name.getText().toString(), description.getText().toString(), R.drawable.dog1, vaccButton.getText().toString(), genderButton.getText().toString(), dateButton.getText().toString());
+        UdomiDatabase.getInstance(this).petDAO().addPet(pet);
         startActivity(intent);
     }
 }
