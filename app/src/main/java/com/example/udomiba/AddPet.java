@@ -38,7 +38,6 @@ public class AddPet extends AppCompatActivity   {
     private Button dateButton;
 
     EditText name, description;
-    //Button save, cancel, date;
     RadioGroup gender, vaccinated;
     RadioButton male, female, vacc, nvacc, genderButton, vaccButton;
 
@@ -167,8 +166,8 @@ public class AddPet extends AppCompatActivity   {
         Intent intent = new Intent(this, MainActivity.class);
         int selectedIdGender = gender.getCheckedRadioButtonId();
         int selectedIdVacc = vaccinated.getCheckedRadioButtonId();
-        genderButton = (RadioButton) findViewById(selectedIdGender);
-        vaccButton= (RadioButton) findViewById(selectedIdVacc);
+        genderButton = findViewById(selectedIdGender);
+        vaccButton= findViewById(selectedIdVacc);
 
         Bundle bundle = getIntent().getExtras();
         int id=bundle.getInt(MyPetsFragment.EXTRA_ID);

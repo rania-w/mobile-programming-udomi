@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        int id=bundle.getInt(LoginPage.EXTRA_ID);
+        int id=bundle.getInt(String.valueOf(LoginPage.EXTRA_ID));
     }
 
     private void setUpAdapter(ViewPager viewPager){

@@ -9,7 +9,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class LoginPage extends AppCompatActivity {
-    //Button prijaviSe = (Button) findViewById(R.id.prijavi_se_button);
     EditText email, password;
     public static final String EXTRA_ID="";
 
@@ -30,8 +29,8 @@ public class LoginPage extends AppCompatActivity {
     public void onLoginClick(View view){
         User user = UdomiDatabase.getInstance(this).userDAO().verifyLogin(email.getText().toString(), password.getText().toString());
         if(user==null){
-            Toast.makeText(this, "Korisnik ne postoji/netačna lozinka", Toast.LENGTH_SHORT).show();
-        } else {
+            Toast.makeText(this, "Korisnik ne postoji/pogrešna lozinka", Toast.LENGTH_SHORT).show();
+        } else{
             Intent intent = new Intent(LoginPage.this, MainActivity.class);
             intent.putExtra(EXTRA_ID, user.getUserId());
             startActivity(intent);

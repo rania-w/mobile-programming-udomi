@@ -15,4 +15,7 @@ public interface UserDAO {
 
     @Query("SELECT * FROM users WHERE email = :email AND password = :password")
     User verifyLogin(String email, String password);
+
+    @Query("SELECT userId FROM users WHERE email = :email")
+    int getIdByEmail(String email);
 }

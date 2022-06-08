@@ -25,19 +25,18 @@ public class RegisterPage extends AppCompatActivity {
     }
 
     public void onRegisterButton(View view){
-        String newMail=email.getText().toString();
-        User user;
-        user = UdomiDatabase.getInstance(this).userDAO().getByEmail(newMail);
-        if(user==null && password.getText().toString().equals(password2.getText().toString())){
-            User newUser = new User(email.getText().toString(), phoneNumber.getText().toString(), password.getText().toString());
+        String newMail = email.getText().toString();
+        User user; user=UdomiDatabase.getInstance(this).userDAO().getByEmail(newMail);
+        if(user==null){
+            User newUser = new User (email.getText().toString(), phoneNumber.getText().toString(), password.getText().toString());
             UdomiDatabase.getInstance(this).userDAO().addUser(newUser);
             int newId = newUser.getUserId();
-            //upon registration the user is brought back to the register page for reasons
-            Intent intent = new Intent(this, LoginPage.class);
+            Intent intent = new Intent(RegisterPage.this, LoginPage.class);
             intent.putExtra(EXTRA_ID, newId);
             startActivity(intent);
-        } else {
-            Toast.makeText(this, "Žao nam je, email adresa koju ste unijeli je već uzeta", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Registracija uspješna", Toast.LENGTH_SHORT).show();
+        } else{
+            Toast.makeText(this, "Email adresa zauzeta", Toast.LENGTH_SHORT).show();
         }
     }
 }

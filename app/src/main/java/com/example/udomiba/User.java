@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "users")
 public class User {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int userId;
     private String email;
     private String phoneNumber;
