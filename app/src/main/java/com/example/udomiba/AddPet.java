@@ -2,7 +2,6 @@ package com.example.udomiba;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentContainerView;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -38,7 +37,7 @@ public class AddPet extends AppCompatActivity   {
     private static final int LOCATION_REQUEST_CODE = 123;
     private FusedLocationProviderClient mFueLocationProviderClient;
     private GoogleMap mMap;
-    private FragmentContainerView mSupportMapFragment;
+    private SupportMapFragment mSupportMapFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

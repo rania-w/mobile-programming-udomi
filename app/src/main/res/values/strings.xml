@@ -3,7 +3,7 @@
     <string name="description">Opis ljubimca</string>
     <string name="gender">Spol</string>
     <string name="vaccinated">Vakcinacija</string>
-    <string name="birthdate">Datum rođenja</string>
+    <string name="birthdate">Datum rođenja ljubimca \n(ako niste sigurni, stavite približan datum)</string>
     <string name="adopt">Udomi!</string>
     <string name="unesimail">Unesite e-mail</string>
     <string name="unesiloz">Unesite lozinku</string>
@@ -32,4 +32,5 @@
     <string name="cancel">Odustani</string>
     <string name="edit_location">Promijenite lokaciju</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="search">Pretraži</string>
 </resources>

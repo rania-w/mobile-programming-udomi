@@ -1,6 +1,17 @@
 package com.example.udomiba;
 
-public class Pet {
+import android.content.Intent;
+import android.os.Bundle;
+
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+import java.io.Serializable;
+
+@Entity(tableName = "pets")
+public class Pet implements Serializable {
+    @PrimaryKey(autoGenerate = true)
+    private int petId;
     String name;
     String description;
     int photo;
@@ -8,9 +19,9 @@ public class Pet {
     String gender;
     String birthdate;
     int adopted;
-    int missing;
+    int ownerId;
 
-    public Pet(String name, String description, int photo, String vaccinated, String gender, String birthdate) {
+    public Pet(String name, String description, int photo, String vaccinated, String gender, String birthdate, int ownerId) {
         this.name = name;
         this.description = description;
         this.photo = photo;
@@ -18,6 +29,15 @@ public class Pet {
         this.gender = gender;
         this.birthdate = birthdate;
         this.adopted=0;
+        this.ownerId = ownerId;
+    }
+
+    public int getPetId() {
+        return petId;
+    }
+
+    public void setPetId(int id) {
+        this.petId = id;
     }
 
     public String getName() {

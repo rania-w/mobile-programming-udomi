@@ -17,7 +17,7 @@
         app:srcCompat="@drawable/dog" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress2"
+        android:id="@+id/login_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -29,7 +29,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/login_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -38,35 +38,35 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress2" />
+        app:layout_constraintTop_toBottomOf="@+id/login_email" />
 
     <Button
-        android:id="@+id/prijavi_se_button"
+        android:id="@+id/login_button"
         android:layout_width="180dp"
         android:layout_height="64dp"
         android:layout_marginTop="48dp"
         android:backgroundTint="@color/udomi_zelena"
-        android:onClick="moveToHomepage"
+        android:onClick="onLoginClick"
         android:text="@string/prijavise"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/login_password" />
 
     <Button
-        android:id="@+id/registruj_se_button"
+        android:id="@+id/create_account_button"
         android:layout_width="180dp"
         android:layout_height="64dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="24dp"
         android:backgroundTint="@color/udomi_zelena"
-        android:onClick="moveToRegisterPage"
+        android:onClick="onRegisterClick"
         android:text="@string/registrujse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/prijavi_se_button" />
+        app:layout_constraintTop_toBottomOf="@+id/login_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

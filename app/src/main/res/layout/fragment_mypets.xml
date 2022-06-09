@@ -12,7 +12,7 @@
         android:layout_marginTop="24dp"
         android:background="@color/udomi_zelena"
         android:gravity="center"
-        android:text="Ćao, user!"
+        android:text="Ćao!"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="24sp"
@@ -39,16 +39,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_missing_button" />
-
-    <Button
-        android:id="@+id/add_missing_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/udomi_crvena"
-        android:text="@string/add_missing"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_pet_button" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

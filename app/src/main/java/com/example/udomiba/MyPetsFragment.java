@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,6 +21,7 @@ public class MyPetsFragment extends Fragment {
     ListView listView;
     Button button;
 
+    public static final String EXTRA_ID = "";
     public static final String EXTRA_IMAGE = "EXTRA_IMAGE";
     public static final String EXTRA_NAME = "EXTRA_NAME";
     public static final String EXTRA_DESCRIPTION = "EXTRA_DESCRIPTION";
@@ -65,15 +67,23 @@ public class MyPetsFragment extends Fragment {
     };
 
     private List<Pet> getPetList() {
-        List<Pet> petList = new ArrayList<>();
+        Intent intent = getActivity().getIntent();
+        Bundle bundle = intent.getExtras();
+        int userId = bundle.getInt(LoginPage.EXTRA_ID);
+        List<Pet> petList = UdomiDatabase.getInstance(getContext()).petDAO().getMine(userId);
+        /*new ArrayList<>();
         petList.add(new Pet("Doggo", "woof", R.drawable.dog1, "vakcinisan", "mužjak", "2020-02-02"));
-        petList.add(new Pet("Catto", "meow", R.drawable.cat1, "vakcinisana", "ženka", "2020-01-01"));
+        petList.add(new Pet("Catto", "meow", R.drawable.cat1, "vakcinisana", "ženka", "2020-01-01"));*/
         return petList;
     }
 
     public void moveToAddPet() {
         Intent intent;
         intent = new Intent(getActivity(), AddPet.class);
+        Intent prev = getActivity().getIntent();
+        Bundle b = prev.getExtras();
+        int uid = b.getInt(String.valueOf(LoginPage.EXTRA_ID));
+        intent.putExtra(EXTRA_ID, uid);
         startActivity(intent);
     }
 }
