@@ -5,13 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -32,6 +35,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.util.Calendar;
 
 public class AddPet extends AppCompatActivity   {
@@ -152,26 +157,78 @@ public class AddPet extends AppCompatActivity   {
     * add image
     * */
 
-    Uri photoUri;
-    public void onImageButton(View view){
+    /*static final int REQUEST_IMAGE_GET = 1;
+
+    @SuppressWarnings("deprecation")
+    public void selectImage(View view) {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
-        if (intent.resolveActivity(getPackageManager())!=null){
-            startActivityForResult(intent, CAMERA);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(intent, REQUEST_IMAGE_GET);
         }
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_IMAGE_GET && resultCode == RESULT_OK) {
+            Uri fullPhotoUri = data.getData();
+            //add uri in pet database
+
+        }
+    }*/
+
+    Uri photoUri;
+    public void onImageButton(View view) {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        if (intent.resolveActivity(getPackageManager()) != null) {
+
+            startActivityForResult(intent, CAMERA);
+        }
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CAMERA && resultCode == RESULT_OK) {
             Bitmap thumbnail = data.getParcelableExtra("data");
             if(thumbnail!=null){
                 imageButton.setImageBitmap(thumbnail);
+
+                Uri tempUri = getImageUri(getApplicationContext(), thumbnail);
+
+                File finalFile = new File(getRealPathFromURI(tempUri));
+
+                photoUri = getImageUri(this, thumbnail);
             }
-            photoUri = data.getData();
+
+
         }
+
     }
+
+    public Uri getImageUri(Context inContext, Bitmap inImage) {
+        Bitmap OutImage = Bitmap.createScaledBitmap(inImage, 1000, 1000, true);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), OutImage, "Title", null);
+        return Uri.parse(path);
+    }
+
+    public String getRealPathFromURI(Uri uri){
+            String path = "";
+            if (getContentResolver() != null) {
+                Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+                if (cursor != null) {
+                    cursor.moveToFirst();
+                    int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+                    path = cursor.getString(idx);
+                    cursor.close();
+                }
+            }
+            return path;
+        }
+
 
     public void onSave(View view){
         Intent intent = new Intent(this, MainActivity.class);
@@ -196,7 +253,7 @@ public class AddPet extends AppCompatActivity   {
         int id=bundle.getInt(MyPetsFragment.EXTRA_ID);
         //can't add images so hardcoded for now
         Pet pet;
-        pet = new Pet(name.getText().toString(), description.getText().toString(), R.drawable.dog1, x, s, dateButton.getText().toString(), id);
+        pet = new Pet(name.getText().toString(), description.getText().toString(), getRealPathFromURI(photoUri), x, s, dateButton.getText().toString(), id);
         UdomiDatabase.getInstance(this).petDAO().addPet(pet);
         startActivity(intent);
     }
