@@ -3,6 +3,7 @@ package com.example.udomiba;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentContainerView;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -29,15 +30,15 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
     private static final int LOCATION_REQUEST_CODE = 123;
     private FusedLocationProviderClient mFusedLocationProviderClient;
     private GoogleMap mMap;
-    private SupportMapFragment mSupportMapFragment;
+    private FragmentContainerView mSupportMapFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
-        mSupportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentContainerView);
-        mSupportMapFragment.getMapAsync(this);
+        mSupportMapFragment = findViewById(R.id.fragmentContainerView);
+        //mSupportMapFragment.getMapAsync(this);
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
     }
 
