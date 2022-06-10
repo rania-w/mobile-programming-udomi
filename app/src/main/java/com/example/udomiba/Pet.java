@@ -1,15 +1,10 @@
 package com.example.udomiba;
 
-import android.content.Intent;
-import android.os.Bundle;
-
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.io.Serializable;
-
 @Entity(tableName = "pets")
-public class Pet implements Serializable {
+public class Pet {
     @PrimaryKey(autoGenerate = true)
     private int petId;
     String name;

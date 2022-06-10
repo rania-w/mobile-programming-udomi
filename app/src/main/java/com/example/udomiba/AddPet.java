@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -36,10 +37,13 @@ import java.util.Calendar;
 public class AddPet extends AppCompatActivity   {
     private DatePickerDialog datePickerDialog;
     private Button dateButton;
+    public static final int CAMERA=9;
+    ImageButton imageButton;
+    Bitmap bitmap;
 
     EditText name, description;
     RadioGroup gender, vaccinated;
-    RadioButton male, female, vacc, nvacc, genderButton, vaccButton;
+    RadioButton male, female, vacc, nvacc/*, genderButton, vaccButton*/;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,9 @@ public class AddPet extends AppCompatActivity   {
         female=findViewById(R.id.female_radio_button);
         vacc=findViewById(R.id.vaccinated_radio_button);
         nvacc=findViewById(R.id.notvaccinated_radio_button);
+
+        imageButton=findViewById(R.id.add_image_button);
+        bitmap=null;
 
         initDatePicker();
         dateButton = findViewById(R.id.datePickerButton);
@@ -141,7 +148,11 @@ public class AddPet extends AppCompatActivity   {
         startActivity(intent);
     }
 
-    static final int REQUEST_IMAGE_GET = 1;
+    /*
+    * add image
+    * */
+
+    /*static final int REQUEST_IMAGE_GET = 1;
 
     @SuppressWarnings("deprecation")
     public void selectImage(View view) {
@@ -160,20 +171,54 @@ public class AddPet extends AppCompatActivity   {
             //add uri in pet database
 
         }
+    }*/
+
+    Uri photoUri;
+    public void onImageButton(View view){
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        if (intent.resolveActivity(getPackageManager())!=null){
+            startActivityForResult(intent, CAMERA);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CAMERA && resultCode == RESULT_OK) {
+            Bitmap thumbnail = data.getParcelableExtra("data");
+            if(thumbnail!=null){
+                imageButton.setImageBitmap(thumbnail);
+            }
+            photoUri = data.getData();
+
+        }
     }
 
     public void onSave(View view){
         Intent intent = new Intent(this, MainActivity.class);
-        int selectedIdGender = gender.getCheckedRadioButtonId();
+        /*int selectedIdGender = gender.getCheckedRadioButtonId();
         int selectedIdVacc = vaccinated.getCheckedRadioButtonId();
         genderButton = findViewById(selectedIdGender);
-        vaccButton= findViewById(selectedIdVacc);
+        vaccButton= findViewById(selectedIdVacc);*/
+
+
+        String s="";
+        String x="";
+
+        if(male.isSelected()){
+            s = male.getText().toString();
+        } else if (female.isSelected()){
+            s=female.getText().toString();
+        }
+        if(vacc.isSelected()) x=vacc.getText().toString();
+        else if(nvacc.isSelected()) x=nvacc.getText().toString();
 
         Bundle bundle = getIntent().getExtras();
         int id=bundle.getInt(MyPetsFragment.EXTRA_ID);
         //can't add images so hardcoded for now
         Pet pet;
-        pet = new Pet(name.getText().toString(), description.getText().toString(), R.drawable.dog1, vaccButton.getText().toString(), genderButton.getText().toString(), dateButton.getText().toString(), id);
+        pet = new Pet(name.getText().toString(), description.getText().toString(), R.drawable.dog1, x, s, dateButton.getText().toString(), id);
         UdomiDatabase.getInstance(this).petDAO().addPet(pet);
         startActivity(intent);
     }
