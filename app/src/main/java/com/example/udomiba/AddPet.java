@@ -1,6 +1,7 @@
 package com.example.udomiba;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -157,27 +158,6 @@ public class AddPet extends AppCompatActivity   {
     * add image
     * */
 
-    /*static final int REQUEST_IMAGE_GET = 1;
-
-    @SuppressWarnings("deprecation")
-    public void selectImage(View view) {
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("image/*");
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(intent, REQUEST_IMAGE_GET);
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_IMAGE_GET && resultCode == RESULT_OK) {
-            Uri fullPhotoUri = data.getData();
-            //add uri in pet database
-
-        }
-    }*/
-
     Uri photoUri;
     public void onImageButton(View view) {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -196,15 +176,10 @@ public class AddPet extends AppCompatActivity   {
             Bitmap thumbnail = data.getParcelableExtra("data");
             if(thumbnail!=null){
                 imageButton.setImageBitmap(thumbnail);
-
                 Uri tempUri = getImageUri(getApplicationContext(), thumbnail);
-
                 File finalFile = new File(getRealPathFromURI(tempUri));
-
                 photoUri = getImageUri(this, thumbnail);
             }
-
-
         }
 
     }
