@@ -9,14 +9,14 @@ public class Pet {
     private int petId;
     String name;
     String description;
-    int photo;
+    String photo;
     String vaccinated;
     String gender;
     String birthdate;
     int adopted;
     int ownerId;
 
-    public Pet(String name, String description, int photo, String vaccinated, String gender, String birthdate, int ownerId) {
+    public Pet(String name, String description, String photo, String vaccinated, String gender, String birthdate, int ownerId) {
         this.name = name;
         this.description = description;
         this.photo = photo;
@@ -51,11 +51,11 @@ public class Pet {
         this.description = description;
     }
 
-    public int getPhoto() {
+    public String getPhoto() {
         return photo;
     }
 
-    public void setPhoto(int photo) {
+    public void setPhoto(String photo) {
         this.photo = photo;
     }
 
