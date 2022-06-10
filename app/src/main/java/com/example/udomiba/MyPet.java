@@ -1,14 +1,10 @@
 package com.example.udomiba;
 
-import static com.example.udomiba.HomepageFragment.EXTRA_DESCRIPTION;
-import static com.example.udomiba.HomepageFragment.EXTRA_NAME;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -45,7 +41,7 @@ public class MyPet extends AppCompatActivity {
             vaccinated.setText(extra.getString(com.example.udomiba.MainActivity.VACCINATED));
         }
 
-        button = (Button) findViewById(R.id.edit_pet_button);
+        button = (Button) findViewById(R.id.adopt_pet_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

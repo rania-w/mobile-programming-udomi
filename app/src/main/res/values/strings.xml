@@ -33,4 +33,5 @@
     <string name="edit_location">Promijenite lokaciju</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="search">Pretraži</string>
+    <string name="datum">Datum rođenja</string>
 </resources>

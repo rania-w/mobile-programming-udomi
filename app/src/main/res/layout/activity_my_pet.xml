@@ -8,7 +8,7 @@
     tools:context=".ShowPet">
 
     <Button
-        android:id="@+id/edit_pet_button"
+        android:id="@+id/adopt_pet_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/udomi_zelena"
@@ -120,7 +120,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/birthdate"
+                android:text="@string/add_birthdate"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 

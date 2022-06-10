@@ -13,6 +13,7 @@ public class RegisterPage extends AppCompatActivity {
     EditText email, phoneNumber, password, password2;
     public static final String EXTRA_ID="";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import java.util.List;
 
 public class HomepageFragment extends Fragment {
+    public static final String EXTRA_ID="";
     public static final String EXTRA_IMAGE = "EXTRA_IMAGE";
     public static final String EXTRA_NAME = "EXTRA_NAME";
     public static final String EXTRA_DESCRIPTION = "EXTRA_DESCRIPTION";
@@ -43,12 +44,13 @@ public class HomepageFragment extends Fragment {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Pet pet = (Pet) parent.getItemAtPosition(position);
             Intent intent = new Intent(getActivity(), ShowPet.class);
-            intent.putExtra(EXTRA_IMAGE,pet.getPhoto());
+            intent.putExtra(EXTRA_ID, pet.getPetId());
+            /*intent.putExtra(EXTRA_IMAGE,pet.getPhoto());
             intent.putExtra(EXTRA_NAME, pet.getName());
             intent.putExtra(EXTRA_DESCRIPTION, pet.getDescription());
             intent.putExtra(BIRTHDATE, pet.getBirthdate());
             intent.putExtra(GENDER, pet.getGender());
-            intent.putExtra(VACCINATED, pet.getVaccinated());
+            intent.putExtra(VACCINATED, pet.getVaccinated());*/
 
             startActivity(intent);
         }

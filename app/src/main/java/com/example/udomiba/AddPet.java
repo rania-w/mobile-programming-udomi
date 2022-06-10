@@ -46,6 +46,7 @@ public class AddPet extends AppCompatActivity   {
     public static final int CAMERA=9;
     ImageButton imageButton;
     Bitmap bitmap;
+    public static final String EXTRA_ID="";
 
     EditText name, description;
     RadioGroup gender, vaccinated;
@@ -163,7 +164,6 @@ public class AddPet extends AppCompatActivity   {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
         if (intent.resolveActivity(getPackageManager()) != null) {
-
             startActivityForResult(intent, CAMERA);
         }
     }
@@ -174,44 +174,16 @@ public class AddPet extends AppCompatActivity   {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CAMERA && resultCode == RESULT_OK) {
             Bitmap thumbnail = data.getParcelableExtra("data");
+            photoUri = data.getData();
             if(thumbnail!=null){
                 imageButton.setImageBitmap(thumbnail);
-                Uri tempUri = getImageUri(getApplicationContext(), thumbnail);
-                File finalFile = new File(getRealPathFromURI(tempUri));
-                photoUri = getImageUri(this, thumbnail);
             }
         }
 
     }
-
-    public Uri getImageUri(Context inContext, Bitmap inImage) {
-        Bitmap OutImage = Bitmap.createScaledBitmap(inImage, 1000, 1000, true);
-        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), OutImage, "Title", null);
-        return Uri.parse(path);
-    }
-
-    public String getRealPathFromURI(Uri uri){
-            String path = "";
-            if (getContentResolver() != null) {
-                Cursor cursor = getContentResolver().query(uri, null, null, null, null);
-                if (cursor != null) {
-                    cursor.moveToFirst();
-                    int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
-                    path = cursor.getString(idx);
-                    cursor.close();
-                }
-            }
-            return path;
-        }
-
 
     public void onSave(View view){
         Intent intent = new Intent(this, MainActivity.class);
-        /*int selectedIdGender = gender.getCheckedRadioButtonId();
-        int selectedIdVacc = vaccinated.getCheckedRadioButtonId();
-        genderButton = findViewById(selectedIdGender);
-        vaccButton= findViewById(selectedIdVacc);*/
-
 
         String s="";
         String x="";
@@ -226,10 +198,11 @@ public class AddPet extends AppCompatActivity   {
 
         Bundle bundle = getIntent().getExtras();
         int id=bundle.getInt(MyPetsFragment.EXTRA_ID);
-        //can't add images so hardcoded for now
+
         Pet pet;
-        pet = new Pet(name.getText().toString(), description.getText().toString(), getRealPathFromURI(photoUri), x, s, dateButton.getText().toString(), id);
+        pet = new Pet(name.getText().toString(), description.getText().toString(), photoUri.toString(), x, s, dateButton.getText().toString(), id);
         UdomiDatabase.getInstance(this).petDAO().addPet(pet);
+        intent.putExtra(EXTRA_ID, pet.getPetId());
         startActivity(intent);
     }
 }

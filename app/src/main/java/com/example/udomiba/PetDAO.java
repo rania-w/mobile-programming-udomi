@@ -16,4 +16,12 @@ public interface PetDAO {
 
     @Insert
     void addPet(Pet pet);
+
+    @Query("SELECT * FROM pets WHERE petId = :id")
+    Pet getById(int id);
+
+    @Query("SELECT u.phoneNumber FROM users AS u " +
+            "JOIN pets AS p ON  u.userId=p.ownerId " +
+            "WHERE p.petId= :id")
+    String getPhoneByPetId(int id);
 }
