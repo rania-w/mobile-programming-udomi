@@ -18,6 +18,8 @@ public class ShowPet extends AppCompatActivity {
     private TextView vaccinated;
     int id;
     Pet pet;
+    TextView location;
+    String locationText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,7 @@ public class ShowPet extends AppCompatActivity {
         birthdate=findViewById(R.id.birthdate_data);
         gender=findViewById(R.id.gender_data);
         vaccinated=findViewById(R.id.vaccinated_data);
+        location=findViewById(R.id.location_data);
 
         Intent intent = getIntent();
         Bundle extra = intent.getExtras();
@@ -38,10 +41,12 @@ public class ShowPet extends AppCompatActivity {
             pet=UdomiDatabase.getInstance(this).petDAO().getById(id);
             name.setText(pet.getName());
             description.setText(pet.getDescription());
-            //imageView.setImageURI(Uri.parse(pet.getPhoto()));
             birthdate.setText(pet.getBirthdate());
             gender.setText(pet.getGender());
             vaccinated.setText(pet.getVaccinated());
+            imageView.setImageResource(pet.getPhoto());
+
+
             /*name.setText(extra.getString(com.example.udomiba.MainActivity.NAME));
             description.setText(extra.getString(com.example.udomiba.MainActivity.DESCRIPTION));
             imageView.setImageResource(extra.getInt(com.example.udomiba.MainActivity.IMAGE));

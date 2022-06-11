@@ -60,8 +60,9 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
         saveLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {;
-                Intent intent = new Intent(Map.this, MyPetsFragment.class);
+                Intent intent = new Intent(Map.this, AddPet.class);
                 intent.putExtra(EXTRA_LOCATION, currentLocation);
+                startActivity(intent);
             }
         });
     }
@@ -83,7 +84,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
                                     mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
                                     try {
                                         myLocation = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-                                       /* if(myLocation!=null && myLocation.size()>0){
+                                       /*if(myLocation!=null && myLocation.size()>0){
 
                                         }*/
                                     } catch (IOException e) {
@@ -143,7 +144,6 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
             }
         }
     }
-
 
 
     /*@Override

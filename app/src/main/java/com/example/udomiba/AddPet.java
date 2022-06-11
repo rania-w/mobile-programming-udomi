@@ -25,6 +25,7 @@ import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -54,6 +55,7 @@ public class AddPet extends AppCompatActivity   {
     RadioGroup gender, vaccinated;
     RadioButton male, female, vacc, nvacc /*, genderButton, vaccButton*/;
 
+    TextView locdata;
     Spinner species;
 
     @Override
@@ -72,8 +74,8 @@ public class AddPet extends AppCompatActivity   {
 
         species = findViewById(R.id.species_spinner);
 
-        //imageButton=findViewById(R.id.add_image_button);
-        //bitmap=null;
+        locdata=findViewById(R.id.location_data);
+
 
         initDatePicker();
         dateButton = findViewById(R.id.datePickerButton);
@@ -166,45 +168,14 @@ public class AddPet extends AppCompatActivity   {
         startActivity(intent);
     }
 
-    /*
-    * add image
-    *
-
-    Uri photoUri;
-    public void onImageButton(View view) {
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("image/*");
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(intent, CAMERA);
-        }
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == CAMERA && resultCode == RESULT_OK) {
-            Bitmap thumbnail = data.getParcelableExtra("data");
-            photoUri = data.getData();
-            if(thumbnail!=null){
-                imageButton.setImageBitmap(thumbnail);
-            }
-        }
-
-    }*/
-
-
-
     public void onSave(View view){
         Intent intent = new Intent(this, MainActivity.class);
         Intent locIntent = this.getIntent();
         Bundle b = locIntent.getExtras();
         Location l = b.getParcelable(Map.EXTRA_LOCATION);
 
-
         String s;
         String x;
-
         if(male.isSelected()){
             s = male.getText().toString();
         } else {
@@ -213,19 +184,28 @@ public class AddPet extends AppCompatActivity   {
         if(vacc.isSelected()) x=vacc.getText().toString();
         else x=nvacc.getText().toString();
 
-        /*int genderSelected = gender.getCheckedRadioButtonId();
-        genderButton = findViewById(genderSelected);
-
-        int vaccSelected = vaccinated.getCheckedRadioButtonId();
-        vaccButton = findViewById(vaccSelected);*/
-
         Bundle bundle = getIntent().getExtras();
         int id=bundle.getInt(MyPetsFragment.EXTRA_ID);
 
+        int photoId;
+
+        switch (species.getSelectedItem().toString()){
+            case "Pas":
+                photoId = (R.drawable.dog1);
+                break;
+            case "Mačka":
+                photoId = (R.drawable.cat1);
+                break;
+            case "Zec":
+                photoId = (R.drawable.bunny1);
+                break;
+            default: photoId = (R.drawable.dog);
+        }
+
         Pet pet;
-        //pet = new Pet(name.getText().toString(), description.getText().toString(), x, s, dateButton.getText().toString(), id, 2, l.getLatitude(), l.getLongitude());
-        //pet = new Pet(name.getText().toString(), description.getText().toString(), x, s, dateButton.getText().toString(), id, species.getSelectedItem().toString(), 43.856430, 18.413029);
-        pet = new Pet(name.getText().toString(), description.getText().toString(), x, s, dateButton.getText().toString(), id, species.getSelectedItem().toString(), 43.856430, 18.413029);
+        pet = new Pet(name.getText().toString(), description.getText().toString(), x, s, dateButton.getText().toString(), id, photoId, 43.856430, 18.413029);
+
+
         UdomiDatabase.getInstance(this).petDAO().addPet(pet);
         intent.putExtra(EXTRA_ID, pet.getPetId());
         startActivity(intent);
