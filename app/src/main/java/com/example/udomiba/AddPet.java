@@ -44,8 +44,8 @@ public class AddPet extends AppCompatActivity   {
     private DatePickerDialog datePickerDialog;
     private Button dateButton;
     public static final int CAMERA=9;
-    ImageButton imageButton;
-    Bitmap bitmap;
+    //ImageButton imageButton;
+    //Bitmap bitmap;
     public static final String EXTRA_ID="";
 
     EditText name, description;
@@ -66,8 +66,8 @@ public class AddPet extends AppCompatActivity   {
         vacc=findViewById(R.id.vaccinated_radio_button);
         nvacc=findViewById(R.id.notvaccinated_radio_button);
 
-        imageButton=findViewById(R.id.add_image_button);
-        bitmap=null;
+        //imageButton=findViewById(R.id.add_image_button);
+        //bitmap=null;
 
         initDatePicker();
         dateButton = findViewById(R.id.datePickerButton);
@@ -157,7 +157,7 @@ public class AddPet extends AppCompatActivity   {
 
     /*
     * add image
-    * */
+    *
 
     Uri photoUri;
     public void onImageButton(View view) {
@@ -180,7 +180,7 @@ public class AddPet extends AppCompatActivity   {
             }
         }
 
-    }
+    }*/
 
     public void onSave(View view){
         Intent intent = new Intent(this, MainActivity.class);
@@ -205,4 +205,5 @@ public class AddPet extends AppCompatActivity   {
         intent.putExtra(EXTRA_ID, pet.getPetId());
         startActivity(intent);
     }
+
 }
