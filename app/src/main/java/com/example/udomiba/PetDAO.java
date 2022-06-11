@@ -3,6 +3,7 @@ package com.example.udomiba;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -24,4 +25,10 @@ public interface PetDAO {
             "JOIN pets AS p ON  u.userId=p.ownerId " +
             "WHERE p.petId= :id")
     String getPhoneByPetId(int id);
+
+    @Update
+    void updatePet(Pet pet);
+
+    @Query("SELECT * FROM pets WHERE species = :species")
+    List<Pet> getSpecies(String species);
 }

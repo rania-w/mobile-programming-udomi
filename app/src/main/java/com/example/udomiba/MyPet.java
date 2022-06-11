@@ -17,6 +17,10 @@ public class MyPet extends AppCompatActivity {
     private TextView gender;
     private TextView vaccinated;
     private Button button;
+    int id;
+    Pet pet;
+    TextView location;
+    String locationText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +37,21 @@ public class MyPet extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle extra = intent.getExtras();
         if(extra!=null){
-            name.setText(extra.getString(com.example.udomiba.MainActivity.NAME));
+            /*name.setText(extra.getString(com.example.udomiba.MainActivity.NAME));
             description.setText(extra.getString(com.example.udomiba.MainActivity.DESCRIPTION));
             imageView.setImageResource(extra.getInt(com.example.udomiba.MainActivity.IMAGE));
             birthdate.setText(extra.getString(com.example.udomiba.MainActivity.BIRTHDATE));
             gender.setText(extra.getString(com.example.udomiba.MainActivity.GENDER));
-            vaccinated.setText(extra.getString(com.example.udomiba.MainActivity.VACCINATED));
+            vaccinated.setText(extra.getString(com.example.udomiba.MainActivity.VACCINATED));*/
+
+            id=extra.getInt(HomepageFragment.EXTRA_ID);
+            pet=UdomiDatabase.getInstance(this).petDAO().getById(id);
+            name.setText(pet.getName());
+            description.setText(pet.getDescription());
+            birthdate.setText(pet.getBirthdate());
+            gender.setText(pet.getGender());
+            vaccinated.setText(pet.getVaccinated());
+            imageView.setImageResource(pet.getPhoto());
         }
 
         button = (Button) findViewById(R.id.adopt_pet_button);

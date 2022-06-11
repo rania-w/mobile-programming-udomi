@@ -46,9 +46,6 @@ import java.util.Calendar;
 public class AddPet extends AppCompatActivity   {
     private DatePickerDialog datePickerDialog;
     private Button dateButton;
-    public static final int CAMERA=9;
-    //ImageButton imageButton;
-    //Bitmap bitmap;
     public static final String EXTRA_ID="";
 
     EditText name, description;
@@ -65,7 +62,7 @@ public class AddPet extends AppCompatActivity   {
 
         name=findViewById(R.id.add_name);
         description=findViewById(R.id.add_description);
-        gender=findViewById(R.id.radioGroupGender);
+        gender=findViewById(R.id.radioGenderGroup);
         vaccinated=findViewById(R.id.radioGroupVaccinated);
         male=findViewById(R.id.male_radio_button);
         female=findViewById(R.id.female_radio_button);
@@ -170,9 +167,11 @@ public class AddPet extends AppCompatActivity   {
 
     public void onSave(View view){
         Intent intent = new Intent(this, MainActivity.class);
-        Intent locIntent = this.getIntent();
-        Bundle b = locIntent.getExtras();
-        Location l = b.getParcelable(Map.EXTRA_LOCATION);
+        //Intent locIntent = getIntent();
+        //Bundle b = locIntent.getExtras();
+        //Location l = b.getParcelable(Map.EXTRA_LOCATION);
+        //double a = l.getLatitude();
+        //double c = l.getLongitude();
 
         String s;
         String x;
@@ -189,7 +188,9 @@ public class AddPet extends AppCompatActivity   {
 
         int photoId;
 
-        switch (species.getSelectedItem().toString()){
+        String sp=species.getSelectedItem().toString();
+
+        switch (sp){
             case "Pas":
                 photoId = (R.drawable.dog1);
                 break;

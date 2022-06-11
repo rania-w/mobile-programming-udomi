@@ -5,25 +5,58 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.Calendar;
 
 public class EditPet extends AppCompatActivity {
     private DatePickerDialog datePickerDialog;
     private Button dateButton;
+    public static final String EXTRA_ID="";
+
+    EditText name, description;
+    RadioGroup gender, vaccinated;
+    RadioButton male, female, vacc, nvacc /*, genderButton, vaccButton*/;
+
+    TextView locdata;
+    Spinner species;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_pet);
 
+        name=findViewById(R.id.add_name);
+        description=findViewById(R.id.add_description);
+        gender=findViewById(R.id.radioGenderGroup);
+        vaccinated=findViewById(R.id.radioGroupVaccinated);
+        male=findViewById(R.id.male_radio_button);
+        female=findViewById(R.id.female_radio_button);
+        vacc=findViewById(R.id.vaccinated_radio_button);
+        nvacc=findViewById(R.id.notvaccinated_radio_button);
+
+        species = findViewById(R.id.species_spinner);
+
+        locdata=findViewById(R.id.location_data);
+
         initDatePicker();
         dateButton = findViewById(R.id.datePickerButton);
         dateButton.setText(getTodaysDate());
+
+        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this, R.array.species, android.R.layout.simple_spinner_item);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        species.setAdapter(adapter);
     }
     private String getTodaysDate()
     {
@@ -103,6 +136,57 @@ public class EditPet extends AppCompatActivity {
 
     public void goBack(View view){
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void onSave(View v){
+        Intent intent = new Intent(this, MyPetsFragment.class);
+        Intent locIntent = this.getIntent();
+        Bundle b = locIntent.getExtras();
+        Location l = b.getParcelable(Map.EXTRA_LOCATION);
+
+        String s;
+        String x;
+        if(male.isSelected()){
+            s = male.getText().toString();
+        } else {
+            s=female.getText().toString();
+        }
+        if(vacc.isSelected()) x=vacc.getText().toString();
+        else x=nvacc.getText().toString();
+
+        Bundle bundle = getIntent().getExtras();
+        int id=bundle.getInt(MyPetsFragment.EXTRA_ID);
+
+        int photoId;
+
+        String sp=species.getSelectedItem().toString();
+
+        switch (sp){
+            case "Pas":
+                photoId = (R.drawable.dog1);
+                break;
+            case "Mačka":
+                photoId = (R.drawable.cat1);
+                break;
+            case "Zec":
+                photoId = (R.drawable.bunny1);
+                break;
+            default: photoId = (R.drawable.dog);
+        }
+
+        Pet pet;
+        pet = new Pet(name.getText().toString(), description.getText().toString(), x, s, dateButton.getText().toString(), id, photoId, 43.856430, 18.413029);
+
+
+        UdomiDatabase.getInstance(this).petDAO().updatePet(pet);
+        intent.putExtra(EXTRA_ID, pet.getPetId());
+        startActivity(intent);
+
+    }
+
+    public void onLocationClick(View v){
+        Intent intent = new Intent(this, Map.class);
         startActivity(intent);
     }
 }

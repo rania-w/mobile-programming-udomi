@@ -40,7 +40,7 @@ public class MyPetsFragment extends Fragment {
         listView.setAdapter(customListViewAdapter);
         listView.setOnItemClickListener(onItemClickListener);
 
-        button = (Button) view.findViewById(R.id.add_pet_button);
+        button = view.findViewById(R.id.add_pet_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,12 +55,13 @@ public class MyPetsFragment extends Fragment {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Pet pet = (Pet) parent.getItemAtPosition(position);
             Intent intent = new Intent(getActivity(), MyPet.class);
-            intent.putExtra(EXTRA_IMAGE,pet.getPhoto());
+            intent.putExtra(EXTRA_ID, pet.getPetId());
+            /*intent.putExtra(EXTRA_IMAGE,pet.getPhoto());
             intent.putExtra(EXTRA_NAME, pet.getName());
             intent.putExtra(EXTRA_DESCRIPTION, pet.getDescription());
             intent.putExtra(BIRTHDATE, pet.getBirthdate());
             intent.putExtra(GENDER, pet.getGender());
-            intent.putExtra(VACCINATED, pet.getVaccinated());
+            intent.putExtra(VACCINATED, pet.getVaccinated());*/
 
             startActivity(intent);
         }

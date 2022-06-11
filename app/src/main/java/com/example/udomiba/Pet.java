@@ -1,14 +1,17 @@
 package com.example.udomiba;
 
-import android.location.Address;
-import android.location.Location;
 
+import android.location.Address;
+import android.location.Geocoder;
 import androidx.room.ColumnInfo;
-import androidx.room.Embedded;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+
 
 @Entity(tableName = "pets")
 public class Pet {
@@ -34,6 +37,13 @@ public class Pet {
     double lat;
     @ColumnInfo(name="lon")
     double lon;
+
+    @Ignore
+    Geocoder geocoder = new Geocoder(MainActivity.context);
+    @Ignore
+    List<Address> addresses;
+
+
 
     public Pet(String name, String description, String vaccinated, String gender, String birthdate, int ownerId, int photo, double lat, double lon) {
         this.name = name;
@@ -136,4 +146,10 @@ public class Pet {
     }
 
 
+    public String lonlatToString() throws IOException {
+        String city;
+        addresses = geocoder.getFromLocation(this.lat, this.lon, 1);
+        city=addresses.get(0).getLocality();
+        return city;
+    }
 }

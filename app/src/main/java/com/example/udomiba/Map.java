@@ -82,14 +82,14 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
                                     mMap.addMarker(new MarkerOptions().position(currentLocation).title("Marker on current location"));
                                    // mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLocation,15.0f));
                                     mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
-                                    try {
+                                    /*try {
                                         myLocation = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-                                       /*if(myLocation!=null && myLocation.size()>0){
+                                       if(myLocation!=null && myLocation.size()>0){
 
-                                        }*/
+                                        }
                                     } catch (IOException e) {
                                         e.printStackTrace();
-                                    }
+                                    }*/
                                 }else{
                                     Toast.makeText(Map.this,"Unable to get location",Toast.LENGTH_LONG).show();
                                 }
