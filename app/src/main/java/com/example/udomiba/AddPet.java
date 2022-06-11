@@ -16,6 +16,7 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -166,12 +167,17 @@ public class AddPet extends AppCompatActivity   {
     }
 
     public void onSave(View view){
-        Intent intent = new Intent(this, MainActivity.class);
-        //Intent locIntent = getIntent();
-        //Bundle b = locIntent.getExtras();
+        Intent intent = new Intent(this, MainActivity.class);//after svega
+
+        Intent locIntent = new Intent(this, Map.class);
+        locIntent = getIntent(); //vra'a intent od maina, a treba nam man
+        Bundle b = locIntent.getExtras();
+        String city = b.getString(Map.EXTRA_LOCATION);
+        Log.i("debug", city);
         //Location l = b.getParcelable(Map.EXTRA_LOCATION);
         //double a = l.getLatitude();
         //double c = l.getLongitude();
+
 
         String s;
         String x;
@@ -210,7 +216,9 @@ public class AddPet extends AppCompatActivity   {
         }
 
         Pet pet;
-        pet = new Pet(name.getText().toString(), description.getText().toString(), x, s, dateButton.getText().toString(), id, photoId, 43.856430, 18.413029);
+        //pet = new Pet(name.getText().toString(), description.getText().toString(), x, s, dateButton.getText().toString(), id, photoId, 43.856430, 18.413029);
+        pet = new Pet(name.getText().toString(), description.getText().toString(), x, s, dateButton.getText().toString(), id, photoId, city);
+        Log.i("debug", pet.toString());
 
 
         UdomiDatabase.getInstance(this).petDAO().addPet(pet);

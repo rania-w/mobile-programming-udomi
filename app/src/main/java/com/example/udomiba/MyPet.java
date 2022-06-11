@@ -52,6 +52,7 @@ public class MyPet extends AppCompatActivity {
             gender.setText(pet.getGender());
             vaccinated.setText(pet.getVaccinated());
             imageView.setImageResource(pet.getPhoto());
+            location.setText(pet.getCity());
         }
 
         button = (Button) findViewById(R.id.adopt_pet_button);

@@ -45,7 +45,7 @@ public class ShowPet extends AppCompatActivity {
             gender.setText(pet.getGender());
             vaccinated.setText(pet.getVaccinated());
             imageView.setImageResource(pet.getPhoto());
-
+            location.setText(pet.getCity());
 
             /*name.setText(extra.getString(com.example.udomiba.MainActivity.NAME));
             description.setText(extra.getString(com.example.udomiba.MainActivity.DESCRIPTION));

@@ -162,6 +162,9 @@ public class EditPet extends AppCompatActivity {
 
         String sp=species.getSelectedItem().toString();
 
+
+        String city = b.getString(Map.EXTRA_LOCATION);
+
         switch (sp){
             case "Pas":
                 photoId = (R.drawable.dog1);
@@ -176,7 +179,8 @@ public class EditPet extends AppCompatActivity {
         }
 
         Pet pet;
-        pet = new Pet(name.getText().toString(), description.getText().toString(), x, s, dateButton.getText().toString(), id, photoId, 43.856430, 18.413029);
+        //pet = new Pet(name.getText().toString(), description.getText().toString(), x, s, dateButton.getText().toString(), id, photoId, 43.856430, 18.413029);
+        pet = new Pet(name.getText().toString(), description.getText().toString(), x, s, dateButton.getText().toString(), id, photoId, city);
 
 
         UdomiDatabase.getInstance(this).petDAO().updatePet(pet);

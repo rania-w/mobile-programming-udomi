@@ -15,6 +15,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -32,6 +33,7 @@ import com.google.android.gms.tasks.Task;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 
 public class Map extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -40,12 +42,14 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
     private SupportMapFragment mSupportMapFragment;
 
-    Geocoder geocoder = new Geocoder(this);
+
     public static List<Address> myLocation;
+    String city;
     Button saveLocation;
     Location location;
     public static final String EXTRA_LOCATION="";
     LatLng currentLocation;
+    String temp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +65,8 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
             @Override
             public void onClick(View v) {;
                 Intent intent = new Intent(Map.this, AddPet.class);
-                intent.putExtra(EXTRA_LOCATION, currentLocation);
+                //intent.putExtra(EXTRA_LOCATION, currentLocation);
+                intent.putExtra(EXTRA_LOCATION, temp);
                 startActivity(intent);
             }
         });
@@ -82,14 +87,37 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
                                     mMap.addMarker(new MarkerOptions().position(currentLocation).title("Marker on current location"));
                                    // mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLocation,15.0f));
                                     mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
-                                    /*try {
-                                        myLocation = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-                                       if(myLocation!=null && myLocation.size()>0){
+                                    try {
+                                        Geocoder geocoder = new Geocoder(Map.this, Locale.getDefault());
+                                        city = geocoder.getFromLocation(currentLocation.latitude, currentLocation.longitude, 1).toString();
+                                        int start_index = city.indexOf("locality");
+                                        temp = "";
+                                        boolean reached_equal = false;
 
+                                        for( int i = start_index; i < city.length();i++){
+
+                                            if(city.charAt(i) == ','){
+                                                break;
+                                            }
+                                            if(reached_equal){
+                                                temp += city.charAt(i);
+                                            }
+                                            if(city.charAt(i) == '='){
+                                                reached_equal = true;
+                                            }
                                         }
+
+                                        //Log.i("DEBUG", Double.toString(currentLocation.latitude));
+                                        //Log.i("DEBUG", temp);
+
+                                        //&& myLocation.size()>0
+                                       /*if(myLocation!=null ){
+                                            city = myLocation.get(0).getLocality();
+                                            Log.i("debug", city);
+                                        }*/
                                     } catch (IOException e) {
                                         e.printStackTrace();
-                                    }*/
+                                    }
                                 }else{
                                     Toast.makeText(Map.this,"Unable to get location",Toast.LENGTH_LONG).show();
                                 }

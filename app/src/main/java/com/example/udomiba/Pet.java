@@ -37,6 +37,8 @@ public class Pet {
     double lat;
     @ColumnInfo(name="lon")
     double lon;
+    @ColumnInfo(name="city")
+    String city;
 
     @Ignore
     Geocoder geocoder = new Geocoder(MainActivity.context);
@@ -45,7 +47,7 @@ public class Pet {
 
 
 
-    public Pet(String name, String description, String vaccinated, String gender, String birthdate, int ownerId, int photo, double lat, double lon) {
+    /*public Pet(String name, String description, String vaccinated, String gender, String birthdate, int ownerId, int photo, double lat, double lon) {
         this.name = name;
         this.description = description;
         this.vaccinated = vaccinated;
@@ -55,6 +57,17 @@ public class Pet {
         this.photo = photo;
         this.lat = lat;
         this.lon = lon;
+    }*/
+
+    public Pet(String name, String description, String vaccinated, String gender, String birthdate, int ownerId, int photo, String city) {
+        this.name = name;
+        this.description = description;
+        this.vaccinated = vaccinated;
+        this.gender = gender;
+        this.birthdate = birthdate;
+        this.ownerId = ownerId;
+        this.photo = photo;
+        this.city = city;
     }
 
     public int getPetId() {
@@ -143,6 +156,10 @@ public class Pet {
 
     public void setLon(double lon) {
         this.lon = lon;
+    }
+
+    public String getCity(){
+        return this.city;
     }
 
 
