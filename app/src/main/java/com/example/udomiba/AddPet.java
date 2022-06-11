@@ -151,7 +151,7 @@ public class AddPet extends AppCompatActivity   {
     }
 
     public void onLocationClick(View view){
-        Intent intent = new Intent(this, Map.class);
+        Intent intent = new Intent(AddPet.this, Map.class);
         startActivity(intent);
     }
 
@@ -182,9 +182,13 @@ public class AddPet extends AppCompatActivity   {
 
     }*/
 
+
+
     public void onSave(View view){
         Intent intent = new Intent(this, MainActivity.class);
-
+        Intent locIntent = this.getIntent();
+        Bundle b = locIntent.getExtras();
+        Location l = b.getParcelable(Map.EXTRA_LOCATION);
         String s="";
         String x="";
 
@@ -200,7 +204,8 @@ public class AddPet extends AppCompatActivity   {
         int id=bundle.getInt(MyPetsFragment.EXTRA_ID);
 
         Pet pet;
-        pet = new Pet(name.getText().toString(), description.getText().toString(), photoUri.toString(), x, s, dateButton.getText().toString(), id);
+        //pet = new Pet(name.getText().toString(), description.getText().toString(), x, s, dateButton.getText().toString(), id, 2, l.getLatitude(), l.getLongitude());
+        pet = new Pet(name.getText().toString(), description.getText().toString(), x, s, dateButton.getText().toString(), id, 2, 43.856430, 18.413029);
         UdomiDatabase.getInstance(this).petDAO().addPet(pet);
         intent.putExtra(EXTRA_ID, pet.getPetId());
         startActivity(intent);

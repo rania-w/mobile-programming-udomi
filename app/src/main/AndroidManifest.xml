@@ -26,6 +26,10 @@
             android:value="AIzaSyDiNH4Q1FkzvGbPqExvCk_i80wB0kDLCNA" />
 
         <activity
+            android:name=".MapsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_maps" />
+        <activity
             android:name=".Map"
             android:exported="false" />
         <activity
@@ -37,14 +41,15 @@
         <activity
             android:name=".AddPet"
             android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT" />
+                <action android:name="android.media.action.IMAGE_CAPTURE" />
 
-        <intent-filter>
-            <action android:name="android.intent.action.GET_CONTENT" />
-            <action android:name="android.media.action.IMAGE_CAPTURE" />
-            <data android:mimeType="image/*" />
-            <category android:name="android.intent.category.DEFAULT" />
-            <category android:name="android.intent.category.OPENABLE" />
-        </intent-filter>
+                <data android:mimeType="image/*" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.OPENABLE" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".MyPet"
@@ -57,13 +62,12 @@
             android:exported="false" />
         <activity
             android:name=".LoginPage"
-            android:exported="true" >
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".ShowPet"
@@ -73,6 +77,5 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-
 
 </manifest>
