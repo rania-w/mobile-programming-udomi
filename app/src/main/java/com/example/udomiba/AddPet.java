@@ -200,6 +200,12 @@ public class AddPet extends AppCompatActivity   {
             case "Zec":
                 photoId = (R.drawable.bunny1);
                 break;
+            case "Ptica":
+                photoId= R.drawable.birb;
+                break;
+            case "Hrčak":
+                photoId = R.drawable.hamster;
+                break;
             default: photoId = (R.drawable.dog);
         }
 
