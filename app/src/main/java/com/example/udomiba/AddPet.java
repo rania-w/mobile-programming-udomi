@@ -51,7 +51,7 @@ public class AddPet extends AppCompatActivity   {
 
     EditText name, description;
     RadioGroup gender, vaccinated;
-    RadioButton male, female, vacc, nvacc /*, genderButton, vaccButton*/;
+    RadioButton male, female, vacc, nvacc;
 
     TextView locdata;
     Spinner species;
@@ -174,10 +174,6 @@ public class AddPet extends AppCompatActivity   {
         Bundle b = locIntent.getExtras();
         String city = b.getString(Map.EXTRA_LOCATION);
         Log.i("debug", city);
-        //Location l = b.getParcelable(Map.EXTRA_LOCATION);
-        //double a = l.getLatitude();
-        //double c = l.getLongitude();
-
 
         String s;
         String x;
@@ -219,7 +215,6 @@ public class AddPet extends AppCompatActivity   {
         //pet = new Pet(name.getText().toString(), description.getText().toString(), x, s, dateButton.getText().toString(), id, photoId, 43.856430, 18.413029);
         pet = new Pet(name.getText().toString(), description.getText().toString(), x, s, dateButton.getText().toString(), id, photoId, city);
         Log.i("debug", pet.toString());
-
 
         UdomiDatabase.getInstance(this).petDAO().addPet(pet);
         intent.putExtra(EXTRA_ID, pet.getPetId());

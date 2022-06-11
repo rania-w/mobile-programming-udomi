@@ -20,7 +20,6 @@ public class MyPet extends AppCompatActivity {
     int id;
     Pet pet;
     TextView location;
-    String locationText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +43,7 @@ public class MyPet extends AppCompatActivity {
             gender.setText(extra.getString(com.example.udomiba.MainActivity.GENDER));
             vaccinated.setText(extra.getString(com.example.udomiba.MainActivity.VACCINATED));*/
 
-            id=extra.getInt(HomepageFragment.EXTRA_ID);
+            id=extra.getInt(MyPetsFragment.EXTRA_ID);
             pet=UdomiDatabase.getInstance(this).petDAO().getById(id);
             name.setText(pet.getName());
             description.setText(pet.getDescription());
