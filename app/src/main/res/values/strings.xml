@@ -34,4 +34,13 @@
     <string name="title_activity_maps">MapsActivity</string>
     <string name="search">Pretraži</string>
     <string name="datum">Datum rođenja</string>
+    <string name="lokacija">Lokacija</string>
+
+    <string-array name="species">
+        <item>Pas</item>
+        <item>Mačka</item>
+        <item>Ptica</item>
+        <item>Zec</item>
+        <item>Hrčak</item>
+    </string-array>
 </resources>

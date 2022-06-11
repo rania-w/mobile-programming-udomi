@@ -29,13 +29,13 @@ public class Pet {
     @ColumnInfo(name="ownerId")
     int ownerId;
     @ColumnInfo(name="species")
-    int species;
+    String species;
     @ColumnInfo(name="lat")
     double lat;
     @ColumnInfo(name="lon")
     double lon;
 
-    public Pet(String name, String description, String vaccinated, String gender, String birthdate, int ownerId, int species, double lat, double lon) {
+    public Pet(String name, String description, String vaccinated, String gender, String birthdate, int ownerId, String species, double lat, double lon) {
         this.name = name;
         this.description = description;
         this.vaccinated = vaccinated;
@@ -101,5 +101,37 @@ public class Pet {
 
     public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
+    }
+
+    public int getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(int ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public String getSpecies() {
+        return species;
+    }
+
+    public void setSpecies(String species) {
+        this.species = species;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLon() {
+        return lon;
+    }
+
+    public void setLon(double lon) {
+        this.lon = lon;
     }
 }

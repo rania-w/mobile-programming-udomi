@@ -17,12 +17,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -50,7 +52,9 @@ public class AddPet extends AppCompatActivity   {
 
     EditText name, description;
     RadioGroup gender, vaccinated;
-    RadioButton male, female, vacc, nvacc/*, genderButton, vaccButton*/;
+    RadioButton male, female, vacc, nvacc /*, genderButton, vaccButton*/;
+
+    Spinner species;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,12 +70,19 @@ public class AddPet extends AppCompatActivity   {
         vacc=findViewById(R.id.vaccinated_radio_button);
         nvacc=findViewById(R.id.notvaccinated_radio_button);
 
+        species = findViewById(R.id.species_spinner);
+
         //imageButton=findViewById(R.id.add_image_button);
         //bitmap=null;
 
         initDatePicker();
         dateButton = findViewById(R.id.datePickerButton);
         dateButton.setText(getTodaysDate());
+
+        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this, R.array.species, android.R.layout.simple_spinner_item);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        species.setAdapter(adapter);
     }
 
     private String getTodaysDate()
@@ -189,23 +200,32 @@ public class AddPet extends AppCompatActivity   {
         Intent locIntent = this.getIntent();
         Bundle b = locIntent.getExtras();
         Location l = b.getParcelable(Map.EXTRA_LOCATION);
-        String s="";
-        String x="";
+
+
+        String s;
+        String x;
 
         if(male.isSelected()){
             s = male.getText().toString();
-        } else if (female.isSelected()){
+        } else {
             s=female.getText().toString();
         }
         if(vacc.isSelected()) x=vacc.getText().toString();
-        else if(nvacc.isSelected()) x=nvacc.getText().toString();
+        else x=nvacc.getText().toString();
+
+        /*int genderSelected = gender.getCheckedRadioButtonId();
+        genderButton = findViewById(genderSelected);
+
+        int vaccSelected = vaccinated.getCheckedRadioButtonId();
+        vaccButton = findViewById(vaccSelected);*/
 
         Bundle bundle = getIntent().getExtras();
         int id=bundle.getInt(MyPetsFragment.EXTRA_ID);
 
         Pet pet;
         //pet = new Pet(name.getText().toString(), description.getText().toString(), x, s, dateButton.getText().toString(), id, 2, l.getLatitude(), l.getLongitude());
-        pet = new Pet(name.getText().toString(), description.getText().toString(), x, s, dateButton.getText().toString(), id, 2, 43.856430, 18.413029);
+        //pet = new Pet(name.getText().toString(), description.getText().toString(), x, s, dateButton.getText().toString(), id, species.getSelectedItem().toString(), 43.856430, 18.413029);
+        pet = new Pet(name.getText().toString(), description.getText().toString(), x, s, dateButton.getText().toString(), id, species.getSelectedItem().toString(), 43.856430, 18.413029);
         UdomiDatabase.getInstance(this).petDAO().addPet(pet);
         intent.putExtra(EXTRA_ID, pet.getPetId());
         startActivity(intent);
