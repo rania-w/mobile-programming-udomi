@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:backgroundTint="#FFFFFF"
     tools:context=".Map">
 
     <fragment
@@ -24,7 +26,7 @@
         android:layout_marginBottom="32dp"
         android:clickable="true"
         android:onClick="onGetMyLocation"
-        app:backgroundTint="@color/lepazelena"
+        app:backgroundTint="@color/leparoza"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_baseline_location_on_24" />

@@ -61,6 +61,8 @@ public class AddPet extends AppCompatActivity   {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_pet);
 
+        Toast.makeText(AddPet.this, "Molimo Vas, prvo dodajte lokaciju", Toast.LENGTH_LONG).show();
+
         name=findViewById(R.id.add_name);
         description=findViewById(R.id.add_description);
         gender=findViewById(R.id.radioGenderGroup);
