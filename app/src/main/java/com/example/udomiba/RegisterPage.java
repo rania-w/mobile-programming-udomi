@@ -48,7 +48,7 @@ public class RegisterPage extends AppCompatActivity {
     public void onRegisterButton(View view){
         String newMail = email.getText().toString();
         User user; user=UdomiDatabase.getInstance(this).userDAO().getByEmail(newMail);
-        if(user==null){
+        if(user==null && password.getText().toString().equals(password2.getText().toString())){
             User newUser = new User (email.getText().toString(), phoneNumber.getText().toString(), password.getText().toString());
             UdomiDatabase.getInstance(this).userDAO().addUser(newUser);
             int newId = newUser.getUserId();
