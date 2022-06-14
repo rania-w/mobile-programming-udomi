@@ -46,19 +46,6 @@ public class Pet {
     List<Address> addresses;
 
 
-
-    /*public Pet(String name, String description, String vaccinated, String gender, String birthdate, int ownerId, int photo, double lat, double lon) {
-        this.name = name;
-        this.description = description;
-        this.vaccinated = vaccinated;
-        this.gender = gender;
-        this.birthdate = birthdate;
-        this.ownerId = ownerId;
-        this.photo = photo;
-        this.lat = lat;
-        this.lon = lon;
-    }*/
-
     public Pet(String name, String description, String vaccinated, String gender, String birthdate, int ownerId, int photo, String city) {
         this.name = name;
         this.description = description;

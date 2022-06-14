@@ -44,10 +44,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.util.Calendar;
 
-public class AddPet extends AppCompatActivity   {
+public class AddPet extends AppCompatActivity {
     private DatePickerDialog datePickerDialog;
     private Button dateButton;
-    public static final String EXTRA_ID="";
+    public static final String EXTRA_ID = "";
 
     EditText name, description;
     RadioGroup gender, vaccinated;
@@ -63,32 +63,31 @@ public class AddPet extends AppCompatActivity   {
 
         Toast.makeText(AddPet.this, "Molimo Vas, prvo dodajte lokaciju", Toast.LENGTH_LONG).show();
 
-        name=findViewById(R.id.add_name);
-        description=findViewById(R.id.add_description);
-        gender=findViewById(R.id.radioGenderGroup);
-        vaccinated=findViewById(R.id.radioGroupVaccinated);
-        male=findViewById(R.id.male_radio_button);
-        female=findViewById(R.id.female_radio_button);
-        vacc=findViewById(R.id.vaccinated_radio_button);
-        nvacc=findViewById(R.id.notvaccinated_radio_button);
+        name = findViewById(R.id.add_name);
+        description = findViewById(R.id.add_description);
+        gender = findViewById(R.id.radioGenderGroup);
+        vaccinated = findViewById(R.id.radioGroupVaccinated);
+        male = findViewById(R.id.male_radio_button);
+        female = findViewById(R.id.female_radio_button);
+        vacc = findViewById(R.id.vaccinated_radio_button);
+        nvacc = findViewById(R.id.notvaccinated_radio_button);
 
         species = findViewById(R.id.species_spinner);
 
-        locdata=findViewById(R.id.location_data);
+        locdata = findViewById(R.id.location_data);
 
 
         initDatePicker();
         dateButton = findViewById(R.id.datePickerButton);
         dateButton.setText(getTodaysDate());
 
-        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this, R.array.species, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.species, android.R.layout.simple_spinner_item);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         species.setAdapter(adapter);
     }
 
-    private String getTodaysDate()
-    {
+    private String getTodaysDate() {
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH);
@@ -97,10 +96,8 @@ public class AddPet extends AppCompatActivity   {
         return makeDateString(day, month, year);
     }
 
-    private void initDatePicker()
-    {
-        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener()
-        {
+    private void initDatePicker() {
+        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
@@ -118,83 +115,80 @@ public class AddPet extends AppCompatActivity   {
         int style = AlertDialog.THEME_HOLO_LIGHT;
 
         datePickerDialog = new DatePickerDialog(this, style, dateSetListener, year, month, day);
-        //datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+
 
     }
 
-    private String makeDateString(int day, int month, int year)
-    {
+    private String makeDateString(int day, int month, int year) {
         return getMonthFormat(month) + " " + day + " " + year;
     }
 
-    private String getMonthFormat(int month)
-    {
-        if(month == 1)
+    private String getMonthFormat(int month) {
+        if (month == 1)
             return "JAN";
-        if(month == 2)
+        if (month == 2)
             return "FEB";
-        if(month == 3)
+        if (month == 3)
             return "MAR";
-        if(month == 4)
+        if (month == 4)
             return "APR";
-        if(month == 5)
+        if (month == 5)
             return "MAY";
-        if(month == 6)
+        if (month == 6)
             return "JUN";
-        if(month == 7)
+        if (month == 7)
             return "JUL";
-        if(month == 8)
+        if (month == 8)
             return "AUG";
-        if(month == 9)
+        if (month == 9)
             return "SEP";
-        if(month == 10)
+        if (month == 10)
             return "OCT";
-        if(month == 11)
+        if (month == 11)
             return "NOV";
-        if(month == 12)
+        if (month == 12)
             return "DEC";
 
         //default should never happen
         return "JAN";
     }
 
-    public void openDatePicker(View view)
-    {
+    public void openDatePicker(View view) {
         datePickerDialog.show();
     }
 
-    public void onLocationClick(View view){
+    public void onLocationClick(View view) {
         Intent intent = new Intent(AddPet.this, Map.class);
         startActivity(intent);
     }
 
-    public void onSave(View view){
+    public void onSave(View view) {
         Intent intent = new Intent(this, MainActivity.class);//after svega
 
         Intent locIntent = new Intent(this, Map.class);
-        locIntent = getIntent(); //vra'a intent od maina, a treba nam man
+        locIntent = getIntent();
         Bundle b = locIntent.getExtras();
         String city = b.getString(Map.EXTRA_LOCATION);
         Log.i("debug", city);
 
         String s;
         String x;
-        if(male.isSelected()){
+        if (male.isSelected()) {
             s = male.getText().toString();
         } else {
-            s=female.getText().toString();
+            s = female.getText().toString();
         }
-        if(vacc.isSelected()) x=vacc.getText().toString();
-        else x=nvacc.getText().toString();
+        if (vacc.isSelected()) x = vacc.getText().toString();
+        else x = nvacc.getText().toString();
 
         Bundle bundle = getIntent().getExtras();
-        int id=bundle.getInt(MyPetsFragment.EXTRA_ID);
+        int id = bundle.getInt(MyPetsFragment.EXTRA_ID);
 
         int photoId;
 
-        String sp=species.getSelectedItem().toString();
+        String sp = species.getSelectedItem().toString();
 
-        switch (sp){
+        switch (sp) {
             case "Pas":
                 photoId = (R.drawable.dog1);
                 break;
@@ -205,18 +199,18 @@ public class AddPet extends AppCompatActivity   {
                 photoId = (R.drawable.bunny1);
                 break;
             case "Ptica":
-                photoId= R.drawable.birb;
+                photoId = R.drawable.birb;
                 break;
             case "Hrčak":
                 photoId = R.drawable.hamster;
                 break;
-            default: photoId = (R.drawable.dog);
+            default:
+                photoId = (R.drawable.dog);
         }
 
         Pet pet;
-        //pet = new Pet(name.getText().toString(), description.getText().toString(), x, s, dateButton.getText().toString(), id, photoId, 43.856430, 18.413029);
         pet = new Pet(name.getText().toString(), description.getText().toString(), x, s, dateButton.getText().toString(), id, photoId, city);
-        Log.i("debug", pet.toString());
+
 
         UdomiDatabase.getInstance(this).petDAO().addPet(pet);
         intent.putExtra(EXTRA_ID, pet.getPetId());

@@ -36,12 +36,6 @@ public class MyPet extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle extra = intent.getExtras();
         if(extra!=null){
-            /*name.setText(extra.getString(com.example.udomiba.MainActivity.NAME));
-            description.setText(extra.getString(com.example.udomiba.MainActivity.DESCRIPTION));
-            imageView.setImageResource(extra.getInt(com.example.udomiba.MainActivity.IMAGE));
-            birthdate.setText(extra.getString(com.example.udomiba.MainActivity.BIRTHDATE));
-            gender.setText(extra.getString(com.example.udomiba.MainActivity.GENDER));
-            vaccinated.setText(extra.getString(com.example.udomiba.MainActivity.VACCINATED));*/
 
             id=extra.getInt(MyPetsFragment.EXTRA_ID);
             pet=UdomiDatabase.getInstance(this).petDAO().getById(id);

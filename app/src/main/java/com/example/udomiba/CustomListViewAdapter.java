@@ -50,7 +50,6 @@ public class CustomListViewAdapter extends BaseAdapter {
         TextView description = (TextView) view.findViewById(R.id.description);
 
         image.setImageResource(pet.getPhoto());
-//        image.setImageURI();
         name.setText(pet.getName());
         description.setText(pet.getDescription());
 

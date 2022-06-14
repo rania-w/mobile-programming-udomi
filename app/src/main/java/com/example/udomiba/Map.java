@@ -107,14 +107,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
                                             }
                                         }
 
-                                        //Log.i("DEBUG", Double.toString(currentLocation.latitude));
-                                        //Log.i("DEBUG", temp);
 
-                                        //&& myLocation.size()>0
-                                       /*if(myLocation!=null ){
-                                            city = myLocation.get(0).getLocality();
-                                            Log.i("debug", city);
-                                        }*/
                                     } catch (IOException e) {
                                         e.printStackTrace();
                                     }
@@ -142,10 +135,7 @@ public class Map extends AppCompatActivity implements OnMapReadyCallback {
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         mMap = googleMap;
-        /*LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));*/
-        //getLocation();
+
     }
 
     private void getPermissions(){

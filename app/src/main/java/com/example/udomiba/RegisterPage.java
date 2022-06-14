@@ -60,7 +60,7 @@ public class RegisterPage extends AppCompatActivity {
                     .setContentText("Registracija uspješna")
                     .setSmallIcon(R.drawable.dog)
                     //.setSound(sound)
-            /*.addAction(neki drawable neshto, "šta se radi", intent)*/
+
             ;
             NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(RegisterPage.this);
             notificationManagerCompat.notify(1, builder.build());

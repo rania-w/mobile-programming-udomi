@@ -56,12 +56,7 @@ public class MyPetsFragment extends Fragment {
             Pet pet = (Pet) parent.getItemAtPosition(position);
             Intent intent = new Intent(getActivity(), MyPet.class);
             intent.putExtra(EXTRA_ID, pet.getPetId());
-            /*intent.putExtra(EXTRA_IMAGE,pet.getPhoto());
-            intent.putExtra(EXTRA_NAME, pet.getName());
-            intent.putExtra(EXTRA_DESCRIPTION, pet.getDescription());
-            intent.putExtra(BIRTHDATE, pet.getBirthdate());
-            intent.putExtra(GENDER, pet.getGender());
-            intent.putExtra(VACCINATED, pet.getVaccinated());*/
+
 
             startActivity(intent);
         }
@@ -72,9 +67,7 @@ public class MyPetsFragment extends Fragment {
         Bundle bundle = intent.getExtras();
         int userId = bundle.getInt(LoginPage.EXTRA_ID);
         List<Pet> petList = UdomiDatabase.getInstance(getContext()).petDAO().getMine(userId);
-        /*new ArrayList<>();
-        petList.add(new Pet("Doggo", "woof", R.drawable.dog1, "vakcinisan", "mužjak", "2020-02-02"));
-        petList.add(new Pet("Catto", "meow", R.drawable.cat1, "vakcinisana", "ženka", "2020-01-01"));*/
+
         return petList;
     }
 

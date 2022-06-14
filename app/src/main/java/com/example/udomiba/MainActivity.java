@@ -65,14 +65,13 @@ public class MainActivity extends AppCompatActivity {
         ViewPageAdapter viewPageAdapter = new ViewPageAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         viewPageAdapter.addFragment(new MyPetsFragment());
         viewPageAdapter.addFragment(new HomepageFragment());
-        viewPageAdapter.addFragment(new MissingPetsFragment());
         viewPager.setAdapter(viewPageAdapter);
     }
 /**/
     private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener(){
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item){
-            Log.d("DEBUG", "Item clicked " + item.getItemId());
+
             switch (item.getItemId()){
                 case R.id.nav_my_pets:
                     viewPager.setCurrentItem(0);
@@ -80,9 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.nav_home:
                     viewPager.setCurrentItem(1);
                     return true;
-                /*case R.id.nav_search:
-                    viewPager.setCurrentItem(2);
-                    return true;*/
+
                 default: return false;
             }
         }

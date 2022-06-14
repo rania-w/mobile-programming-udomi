@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment;
 import java.util.List;
 
 public class HomepageFragment extends Fragment {
-    public static final String EXTRA_ID="";
+    public static final String EXTRA_ID = "";
     public static final String EXTRA_IMAGE = "EXTRA_IMAGE";
     public static final String EXTRA_NAME = "EXTRA_NAME";
     public static final String EXTRA_DESCRIPTION = "EXTRA_DESCRIPTION";
@@ -25,10 +25,9 @@ public class HomepageFragment extends Fragment {
     private ListView listView;
 
 
-
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         listView = view.findViewById(R.id.list_view_container);
@@ -45,22 +44,14 @@ public class HomepageFragment extends Fragment {
             Pet pet = (Pet) parent.getItemAtPosition(position);
             Intent intent = new Intent(getActivity(), ShowPet.class);
             intent.putExtra(EXTRA_ID, pet.getPetId());
-            /*intent.putExtra(EXTRA_IMAGE,pet.getPhoto());
-            intent.putExtra(EXTRA_NAME, pet.getName());
-            intent.putExtra(EXTRA_DESCRIPTION, pet.getDescription());
-            intent.putExtra(BIRTHDATE, pet.getBirthdate());
-            intent.putExtra(GENDER, pet.getGender());
-            intent.putExtra(VACCINATED, pet.getVaccinated());*/
+
 
             startActivity(intent);
         }
     };
 
-   private List<Pet> getPetList(){
-        /*List<Pet> petList=new ArrayList<>();
-        petList.add(new Pet("Doggo", "woof", R.drawable.dog1, "vakcinisan", "mužjak", "2020-02-02"));
-        petList.add(new Pet("Catto", "meow", R.drawable.cat1, "vakcinisana", "ženka", "2020-01-01"));
-        petList.add(new Pet("Bunny", "wassup doc", R.drawable.bunny1, "nevakcinisan", "mužjak", "2020-03-03"));*/
+    private List<Pet> getPetList() {
+
         List<Pet> petList = UdomiDatabase.getInstance(getActivity()).petDAO().getAll();
         return petList;
     }

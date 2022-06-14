@@ -47,12 +47,6 @@ public class ShowPet extends AppCompatActivity {
             imageView.setImageResource(pet.getPhoto());
             location.setText(pet.getCity());
 
-            /*name.setText(extra.getString(com.example.udomiba.MainActivity.NAME));
-            description.setText(extra.getString(com.example.udomiba.MainActivity.DESCRIPTION));
-            imageView.setImageResource(extra.getInt(com.example.udomiba.MainActivity.IMAGE));
-            birthdate.setText(extra.getString(com.example.udomiba.MainActivity.BIRTHDATE));
-            gender.setText(extra.getString(com.example.udomiba.MainActivity.GENDER));
-            vaccinated.setText(extra.getString(com.example.udomiba.MainActivity.VACCINATED));*/
         }
 
     }
@@ -71,8 +65,4 @@ public class ShowPet extends AppCompatActivity {
         String num = UdomiDatabase.getInstance(this).petDAO().getPhoneByPetId(id);
         dialPhoneNumber(num);
     }
-
-
-
-
 }
